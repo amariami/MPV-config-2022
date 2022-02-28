@@ -2,7 +2,6 @@
 Just an archive. Generally use with SVP (Smooth Video Project) on Linux (*barebone free license*) and MAC/Windows (*Paid but you could try a trial version*), SVP uses the same [frame interpolation technique](https://en.wikipedia.org/wiki/Motion_interpolation) as available in high-end TVs and projectors (see “TrimensionDNM”, “Motion Plus”, “Motionflow” and others). Though it can be use without SVP.
 Don't forget to set rendering device according on your system `--vulkan-device=help` or `--d3d11-adapter-device=help`.
 
-
 E.g. select "NVIDIA GeForce GTX 1080 Ti" instead of "AMD Radeon(TM) Vega 10 Graphics" for rendering.
 
 `--vulkan-device=NVIDIA GeForce GTX 1080 Ti` or `--d3d11-adapter-device=NVIDIA GeForce GTX 1080 Ti`. 
@@ -41,7 +40,7 @@ or `--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA(EASU)PQ_CAS(RGB).glsl;~~~~~~~~~
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler256_CAS-RGB.glsl` 
 
-[`NVScaler128_CAS-RGB.glsl`](https://github.com/amariami/MPV-config-2022/blob/main/shaders/NVScaler128_CAS-RGB.glsl) for performance (*Combined NIS(Nvidia Image Scaling) + FidelityFX CAS(Contrast Adaptive Sharpening) RGB version*. It get better result cause when using NVScaler only some few parts are supposed blur that become too sharp might unacceptable. CAS get better texture especially on blur part but not get a strong line sharpening.
+[`NVScaler128_CAS-RGB.glsl`](https://github.com/amariami/MPV-config-2022/blob/main/shaders/NVScaler128_CAS-RGB.glsl) for performance (*Combined NIS(Nvidia Image Scaling) + FidelityFX CAS(Contrast Adaptive Sharpening) RGB version* it could get better result cause when using NVScaler only some few parts are supposed blur that become too sharp might unacceptable, while CAS get better texture especially on blur part but not getting a strong line sharpening.
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler.glsl"`
 
@@ -94,7 +93,7 @@ Otherwise don't mind when you couldn't tell the different dxva2-copy and d3d11va
 
 [`--icc-3dlut-size=256x256x256`](https://mpv.io/manual/master/#options-icc-3dlut-size) 
 [3DLUT by James Ritson](https://affinityspotlight.com/article/1d-vs-3d-luts/#3d-luts)
-Calculation 8^N. *64x64x64 72x72x72 80x80x80 88x88x88 96x96x96 04x104x104 112x112x112 120x120x120 128x128x128 ... 256x256x256 ... 512x512x512*
+Calculation 8^N. *64x64x64 72x72x72 80x80x80 88x88x88 96x96x96 104x104x104 112x112x112 120x120x120 128x128x128 ... 256x256x256 ... 512x512x512*
 
 [`--scaler-lut-size=10`](https://mpv.io/manual/master/#options-scaler-lut-size)
 
@@ -129,10 +128,10 @@ With SVP set display to 48 Hertz in your PC;
 * for me no reason using more than doubling frame rate interpolation.
 * On Linux sytem you already know which one is similiar parameter using .vpy script, `--input-ipc-server=mpvpipe`
 
-Advantage set frequency to 48 Hertz you can extend battery life power consumption on mobile laptop and reduce too much resource in PC. So If your system is High-End device you could do complicated settings and use heavy scripts which is still difficult to achieve when using refresh rate more than 48 Hertz.
+Advantage set display frequency to 48 Hertz you can extend battery life, reduce power consumption especially on mobile laptop and reduce too much resource in PC. If your system is High-End device you could do complicated settings and use heavy scripts which is still difficult to achieve when using refresh rate more than 48 Hertz.
 
 `--interpolation=yes` or `--interpolation=no` or don't write this in mpv.conf leaving MPV player do their own
-in my case when running MPV Player only without SVP get very good result while using 60 Hertz display refresh rate.
+in my case when running MPV Player only without SVP get very good result while using 59.999/60 Hertz display refresh rate.
 
 Of course it could be used for other frequency such as 48 Hertz, 72 Hertz, 96 Hertz, 140 Hertz, 240 Herts and so on. However i can't guarantee if it works correctly or not you should try by yourself.
 
@@ -145,4 +144,21 @@ Of course it could be used for other frequency such as 48 Hertz, 72 Hertz, 96 He
 
 [Wikipedia common resolution](https://en.wikipedia.org/wiki/List_of_common_resolutions), [list of 16:9 resolutions](https://levvvel.com/169-resolutions/)
 
-* The best case scenario is running SVP On PC Dekstop CPU with i-GPU (integrated GPU) such as Intel-HD/Iris-Xe/Radeon Vega + Discrete/Dedicated Graphic or Mobile laptop with Hybrid Graphics. Process can run separate process so it doesn't overload devices on one side, SVP can use rendering device to i-GPU then do their own, MPV can do decoding to Discrete or Hybrid Graphics. You can see on monitoring system on Linux terminal or MAC activity monitor or Windows task manager/HWiNFO. If doesn't work you could set the Output display using i-GPU connecting to the motherboard instead Discrete/Dedicated GPU.
+* The best case scenario is running SVP On PC Dekstop CPU with i-GPU (integrated GPU) such as Intel-HD/Iris-Xe/Radeon Vega + Discrete/Dedicated Graphic or Mobile laptop with Hybrid Graphics. Process can run separately so it doesn't overload devices on one side. SVP can use rendering device to i-GPU then do their own, MPV can do decoding to Discrete or Hybrid Graphics. It give headroom for CPU Core to breathe freely. You can see on monitoring system on Linux terminal or MAC activity monitor or Windows task manager/HWiNFO. If doesn't work you could set the Output display using i-GPU connecting HDMI or Display Port into the motherboard instead Discrete/Dedicated GPU.
+
+# Audio Quality
+
+To maintaining good hearing experience suggested using Floating-Point processing instead of Integers. 
+
+*Don't confuse Sample rate in audio recording vs Oversampling Rate on digital to analog signaling* Oversampling Rate is a resampling rate based on the original source sampling rate to reconstruc signal to reduce audio artifacts distortion and reduce aliasing on Nyquist frequency. Higher levels of oversampling results in less aliasing occurring in the audible range.
+
+* Linux 
+<pre> set sample format to
+ f32le           PCM 32-bit floating-point little-endian
+ f64le           PCM 64-bit floating-point little-endian
+ f32be           PCM 32-bit floating-point big-endian
+ f64be           PCM 64-bit floating-point big-endian
+Sample rate/Sampling rate to 192000 Hz
+</pre>
+
+If your audio hardware in your system doesn't support high sample rate audio (e.g. poor built in internal DAC/Speaker), you can use a capable third-party digital audio interface (Headset/DAC/Speaker)
