@@ -148,17 +148,52 @@ Of course it could be used for other frequency such as 48 Hertz, 72 Hertz, 96 He
 
 # Audio Quality
 
-To maintaining good hearing experience suggested using Floating-Point processing instead of Integers. 
+To maintaining good hearing experience i suggested using Floating-Point processing instead of Integers. float (32/32 bits) @ 192000hz 
 
-*Don't confuse Sample rate in audio recording vs Oversampling Rate on digital to analog signaling* Oversampling Rate is a resampling rate based on the original source sampling rate to reconstruc signal to reduce audio artifacts distortion and reduce aliasing on Nyquist frequency. Higher levels of oversampling results in less aliasing occurring in the audible range.
+[32bit Float Explained](https://www.sounddevices.com/32-bit-float-files-explained/)
+
+*Don't confuse Sample rate in audio recording/mastering/converting files vs Oversampling Rate on digital to analog signaling*, that's different. Oversampling is a technique upsampling based on the original source (sample rate) to reconstruct signal to reduce audio artifacts distortion and reduce aliasing in Nyquist frequency. Higher levels of oversampling results in less aliasing occurring in the audible range. 
 
 * Linux 
 <pre> set sample format to
- f32le           PCM 32-bit floating-point little-endian
+ f32le           PCM 32-bit floating-point little-endian (*prefered)
  f64le           PCM 64-bit floating-point little-endian
  f32be           PCM 32-bit floating-point big-endian
  f64be           PCM 64-bit floating-point big-endian
-Sample rate/Sampling rate to 192000 Hz
+ 
+ Sample rate/Sampling rate to 192000 Hz
 </pre>
 
-If your audio hardware in your system doesn't support high sample rate audio (e.g. poor built in internal DAC/Speaker), you can use a capable third-party digital audio interface (Headset/DAC/Speaker)
+* Windows
+<pre>Speaker/Headphones in sound Setting
+Default format set to 24bit, 19200Hz (Studio Quality) </pre>
+
+* [Mac](https://support.apple.com/en-us/HT202730) 
+<pre>Use this device for sound output
+Select a sample rate to 176400.0 Hz or 192000.0 Hz
+</pre>
+
+If your audio hardware in your system doesn't support high sample rate audio (e.g. poor/old built in internal DAC/Speaker), you can use a capable third-party digital audio interface (Headset/DAC/Speaker)
+
+# miscellaneous
+
+Sounds like i talking bias right because you couldn't tell the different 44100Hz/48000Hz vs 176400Hz/192000Hz? Human hearings limited to 20000Hz? That's not completely true. It's about in-machine processing not the human listening experience.
+
+Mostly i'am listening music streaming service like Spotify and Youtube Music. The Offline files like audio or video are in stereo lossy format such as Opus and AAC-LC, sample rate set to 48KHz because 44.1KHz produce cliping.
+
+Advantage using 48 kHz sample rate
+* offers slightly more headroom for tweaking
+* when computer performs processing digital source into sound, generally there's a signal lost (wired/wireless connection) before reaches to the output (speaker). The goal is to reduce effect of signal degradation.
+* reduce aliasing to prevent filter aplied caused by clipping
+* make it possible to capture inaudible sound into audible. Need prove? You could try recording a sound from electronic cleaning machine called "ultrasonic cleaner" with your gadget
+
+reference
+* [Nyquist frequency](https://en.wikipedia.org/wiki/Nyquist_frequency)
+* [Oversampling in Digital Audio by Philip Mantione](https://theproaudiofiles.com/oversampling/)
+* [Nyquist–Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem)
+* [Upsampling vs. Oversampling for Digital Audio](https://www.audioholics.com/audio-technologies/upsampling-vs-oversampling-for-digital-audio)
+* (https://homestudiobasics.com/bit-depth-vs-sample-rate-made-simple/)
+* [Digital Audio Basics: Audio Sample Rate and Bit Depth by Griffin Brown](https://www.izotope.com/en/learn/digital-audio-basics-sample-rate-and-bit-depth.html)
+* [DSD to PCM Conversion](https://audiopraise.com/services/fpga-cores/dsd-to-pcm-conversion/)
+* [Hydrogenaudio Resampling](https://wiki.hydrogenaudio.org/index.php?title=Resampling)
+
