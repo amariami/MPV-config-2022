@@ -102,7 +102,7 @@ vec4 hook() {
 
 // User variables
 // Intensity
-#define SHARPENING 1.0 // Sharpening intensity: Adjusts sharpening intensity by averaging the original pixels to the sharpened result.  1.0 is the unmodified default. 0.0 to 1.0.
+#define SHARPENING 0.5 // Sharpening intensity: Adjusts sharpening intensity by averaging the original pixels to the sharpened result.  1.0 is the unmodified default. 0.0 to 1.0.
 #define CONTRAST 0.0 // Adjusts the range the shader adapts to high contrast (0 is not all the way off).  Higher values = more high contrast sharpening. 0.0 to 1.0.
 
 // Performance
