@@ -36,6 +36,9 @@ or `--glsl-shaders="~~~~~~~~~~~\shaders\FSRCNNX_x2_16-0-4-1.glsl;~~~~~~~~~~~\sha
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA(EASU)PQ_CAS(RGB).glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl"`
 
+or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler256_CAS-RGB.glsl` 
+# NVScaler128_CAS-RGB.glsl for performance (*Combined NIS(Nvidia Image Scaling) + FidelityFX CAS(Contrast Adaptive Sharpening) RGB version*. It get better result cause when using NVScaler only some few parts are supposed blur that become too sharp might unacceptable. CAS get better texture especially on blur part but not get strong sharpening.
+
 or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler.glsl"`
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\NVSharpen.glsl"`
@@ -43,6 +46,8 @@ or `--glsl-shaders="~~~~~~~~~~~\shaders\NVSharpen.glsl"`
 # * Might usable for High-end device
 
 `--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA(EASU)PQ_CAS(RGB).glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl;"`
+
+or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler256_CAS-RGB.glsl;;~~~~~~~~~~~\shaders\KrigBilateral.glsl;`
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\FSRCNNX_x2_16-0-4-1.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl;~~~~~~~~~~~\shaders\CAS-RGB.glsl"`
 
@@ -72,9 +77,9 @@ or `--glsl-shaders="~~~~~~~~~~~\shaders\NVSharpen.glsl"`
 *dxva2 is not safe. It appears to always use BT.601 for forced RGB conversion, but actual behavior depends on the GPU drivers. Some drivers appear to convert to limited range RGB, which gives a faded appearance. In addition to driver-specific behavior, global system settings might affect this additionally. This can give incorrect results even with completely ordinary video sources. see [mpvio manual](https://mpv.io/manual/master/#options-hwdec).*
 
 *All other methods, in particular the copy-back methods (like dxva2-copy etc.) should hopefully be safe, although they can still cause random decoding issues. At the very least, they shouldn't affect the colors of the image.
-Otherwise don't mind when you couldn't tell the different.*
+Otherwise don't mind when you couldn't tell the different dxva2-copy and d3d11va-copy.*
 
-*In general, it's very strongly advised to avoid hardware decoding unless absolutely necessary, i.e. if your CPU is insufficient to decode the file in questions. If you run into any weird decoding issues, frame glitches or discoloration, and you have --hwdec turned on, the first thing you should try is disabling it.*
+*In general, it's very strongly advised to avoid hardware decoding unless absolutely necessary, i.e. if your CPU is insufficient to decode the file in questions. If you run into any weird decoding issues, frame glitches or discoloration, and you have `--hwdec=...` turned on, the first thing you should try is disabling it.*
 
 # load the 3D LUTs created from the ICC profile
 [`--icc-profile-auto`](https://mpv.io/manual/master/#options-icc-profile-auto)
