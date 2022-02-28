@@ -41,7 +41,7 @@ or `--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA(EASU)PQ_CAS(RGB).glsl;~~~~~~~~~
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler256_CAS-RGB.glsl` 
 
-[`NVScaler128_CAS-RGB.glsl`](https://github.com/amariami/MPV-config-2022/blob/main/shaders/NVScaler128_CAS-RGB.glsl) for performance (*Combined NIS(Nvidia Image Scaling) + FidelityFX CAS(Contrast Adaptive Sharpening) RGB version*. It get better result cause when using NVScaler only some few parts are supposed blur that become too sharp might unacceptable. CAS get better texture especially on blur part but not get strong sharpening.
+[`NVScaler128_CAS-RGB.glsl`](https://github.com/amariami/MPV-config-2022/blob/main/shaders/NVScaler128_CAS-RGB.glsl) for performance (*Combined NIS(Nvidia Image Scaling) + FidelityFX CAS(Contrast Adaptive Sharpening) RGB version*. It get better result cause when using NVScaler only some few parts are supposed blur that become too sharp might unacceptable. CAS get better texture especially on blur part but not get a strong line sharpening.
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler.glsl"`
 
