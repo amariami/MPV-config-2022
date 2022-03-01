@@ -4,7 +4,7 @@ Read [mpv.io manual stable for stable version, master for experimental version](
 
 Just an archive. Generally use with SVP (Smooth Video Project) on Linux (*barebone free license*) and MAC/Windows (*Paid but you could try a trial version*), SVP uses the same [frame interpolation technique](https://en.wikipedia.org/wiki/Motion_interpolation) as available in high-end TVs and projectors (see “TrimensionDNM”, “Motion Plus”, “Motionflow” and others). Though it can be use without SVP.
 
-Might be usefull `--sigmoid-upscaling` `correct-downscaling=yes` `linear-downscaling=no`
+Might be usefull `--sigmoid-upscaling` `--correct-downscaling=yes` `--linear-downscaling=no`
 
 Don't forget to set rendering device according on your system `--vulkan-device=help` or `--d3d11-adapter-device=help`.
 
@@ -46,7 +46,7 @@ or `--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA(EASU)PQ_CAS(RGB).glsl;~~~~~~~~~
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler256_CAS-RGB.glsl` 
 
-[`NVScaler128_CAS-RGB.glsl`](https://github.com/amariami/MPV-config-2022/blob/main/shaders/NVScaler128_CAS-RGB.glsl) for performance (*Combined NIS(Nvidia Image Scaling) + FidelityFX CAS(Contrast Adaptive Sharpening) RGB version* it could get better result cause when using NVScaler only some few parts are supposed blur that become too sharp might unacceptable, while CAS get better texture especially on blur part but not getting a strong line sharpening.
+[`NVScaler128_CAS-RGB.glsl`](https://github.com/amariami/MPV-config-2022/blob/main/shaders/NVScaler128_CAS-RGB.glsl) for performance (*Combined NIS(Nvidia Image Scaling) + FidelityFX CAS(Contrast Adaptive Sharpening) RGB version* it could get better result cause when using NVScaler only, some few parts are supposed blur that become too sharp might unacceptable, while CAS get better texture especially on blur part but not getting a strong line sharpening.
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler.glsl"`
 
@@ -99,11 +99,37 @@ Otherwise don't mind when you couldn't tell the different dxva2-copy and d3d11va
 
 [`--icc-3dlut-size=256x256x256`](https://mpv.io/manual/master/#options-icc-3dlut-size) 
 [3DLUT by James Ritson](https://affinityspotlight.com/article/1d-vs-3d-luts/#3d-luts)
-Calculation 8^N. *64x64x64 72x72x72 80x80x80 88x88x88 96x96x96 104x104x104 112x112x112 120x120x120 128x128x128 ... 256x256x256 ... 512x512x512*
+Calculation 8*(N). *64x64x64 72x72x72 80x80x80 88x88x88 96x96x96 104x104x104 112x112x112 120x120x120 128x128x128 ... 256x256x256 ... 512x512x512*
 
 [`--scaler-lut-size=10`](https://mpv.io/manual/master/#options-scaler-lut-size)
 
 [`--icc-cache-dir=~~~~~~~~~~~\`](https://mpv.io/manual/master/#options-icc-cache-dir)
+
+# Deband/Debanding & Grain
+
+Explanation about [Colour Banding](https://iamscum.wordpress.com/_test1/_test2/debanding/), [Film grain/Granularity](https://iamscum.wordpress.com/_test1/_test2/denosingdegraining/). Generally it used for low end PC or not using any shaders while playing 8bit video without applying masking. of course it can be used when using shaders too.
+
+[`--deband=yes`](https://mpv.io/manual/master/#options-deband) #(set to no if you don't need gpu debanding)
+
+[`--deband-iterations=4`](https://mpv.io/manual/master/#options-deband-iterations) #(More = Better quality, but higher GPU cost. Valur more than 4 are ptactically useless). 
+
+Singularity see [#9430](https://github.com/mpv-player/mpv/issues/9430#issuecomment-968109686), [#9479](https://github.com/mpv-player/mpv/issues/9479), [#7521](https://github.com/mpv-player/mpv/issues/7251)
+
+[`--deband-threshold=32`](https://mpv.io/manual/master/#options-deband-threshold) #(More = Less banding, but progressively diminish image details, more detail loss)
+
+[`--deband-range=16`](https://mpv.io/manual/master/#options-deband-range) #((More = Less banding, but higher GPU cost. Increases radius linearly for each iteration. A higher radius will find more gradients, but a lower radius will smooth more aggressively, If you increase the *--deband-iterations*, you should probably decrease this to compensate)
+
+[`--deband-grain=48`](https://mpv.io/manual/master/#options-deband-grain) #(More = Add some extra noise dynamic grain to the image, this significantly helps cover up remaining quantization artifacts)
+
+If don't like grain/noise from your source video you could use static noise shader then set `*--deband-grain=5 #or 0*`, 
+
+[noise by haasn](https://github.com/haasn/gentoo-conf/blob/xor/home/nand/.mpv/shaders/noise.glsl), [noise static by wopian](https://github.com/wopian/mpv-config/blob/master/shaders/noise_static_luma.hook), 
+
+[Film grain1](https://github.com/haasn/gentoo-conf/blob/xor/home/nand/.mpv/shaders/filmgrain.glsl), [Film grain2](https://github.com/haasn/gentoo-conf/blob/xor/home/nand/.mpv/shaders/filmgrain-smooth.glsl) see [#9725](https://github.com/mpv-player/mpv/issues/9725), 
+
+[mpv on reddit](https://www.reddit.com/r/mpv/comments/sws5nk/any_good_shaders_to_deband/), 
+
+Shader by [Tsubajashi](https://github.com/Tsubajashi/mpv-settings)
 
 # Tone mapping
 
@@ -132,7 +158,7 @@ Guide [eXmendiC wordpress](https://iamscum.wordpress.com/guides/videoplayback-gu
 
 Need [`--video-sync=display-...`](https://mpv.io/manual/master/#options-video-sync) to enable MPV built in [interpolation](https://mpv.io/manual/master/#options-interpolation) e.g `--video-sync=display-resample`
 
-Calculation for 24 fps = 24^N, 25 fps = 25^N, 30 fps = 30^N. Explanation guide in [here](https://kokomins.wordpress.com/2019/10/26/svp-4-setup-guide-for-smooth-60-fps-anime-playback/#monitor-refresh-rate-extended)
+Calculation for 24 fps = 24*(N), 25 fps = 25*(N), 30 fps = 30*(N). Explanation guide in [here](https://kokomins.wordpress.com/2019/10/26/svp-4-setup-guide-for-smooth-60-fps-anime-playback/#monitor-refresh-rate-extended)
 
 for 25 fps video set [`--video-sync-max-video-change=...`](https://mpv.io/manual/master/#options-video-sync-max-video-change)
 
@@ -217,4 +243,5 @@ reference
 * [Digital Audio Basics: Audio Sample Rate and Bit Depth by Griffin Brown](https://www.izotope.com/en/learn/digital-audio-basics-sample-rate-and-bit-depth.html)
 * [DSD to PCM Conversion](https://audiopraise.com/services/fpga-cores/dsd-to-pcm-conversion/)
 * [Hydrogenaudio Resampling](https://wiki.hydrogenaudio.org/index.php?title=Resampling)
+* [Wikipedia 44100Hz](https://en.wikipedia.org/wiki/44,100_Hz#Status)
 
