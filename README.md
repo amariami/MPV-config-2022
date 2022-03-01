@@ -188,13 +188,15 @@ Of course it could be used for other frequency such as 48 Hertz, 72 Hertz, 96 He
 
 * The best case scenario is running SVP On PC Dekstop CPU with i-GPU (integrated GPU) such as Intel-HD/Iris-Xe/Radeon Vega + Discrete/Dedicated Graphic or Mobile laptop with Hybrid Graphics. Process can run separately so it doesn't overload devices on one side. SVP can use rendering device to i-GPU then do their own, MPV can do decoding to Discrete or Hybrid Graphics. It give headroom for CPU Core to breathe freely. You can see on monitoring system on Linux terminal or MAC activity monitor or Windows task manager/HWiNFO. If doesn't work you could set the Output display using i-GPU connecting HDMI or Display Port into the motherboard instead Discrete/Dedicated GPU.
 
-# Audio Quality
+# Audio Quality (*#optional*)
 
 To maintaining good hearing experience i suggested using Floating-Point processing instead of Integers. float (32/32 bits) @ 192000hz (*don't confused it's not same as mastering data*)
 
 [32bit Float Explained](https://www.sounddevices.com/32-bit-float-files-explained/)
 
 *Don't confuse Sample rate in audio recording/mastering/converting files vs Oversampling Rate on digital to analog signaling*, that's different. Oversampling is a technique upsampling based on the original source (sample rate) to reconstruct signal to reduce audio artifacts distortion and reduce aliasing in Nyquist frequency. Higher levels of oversampling results in less aliasing occurring in the audible range. 
+
+Sounds like i talking bias right because you couldn't tell the different 44100Hz/48000Hz vs 176400Hz/192000Hz? Human hearings limited to 20000Hz? That's not completely true. It's about in-machine processing not the limitation of human audible frequency range, we can't hear or playing digital audio format like you eating a banana because we don't live in virtual world. If we live in cyberspace and limitations as human in general still exist, it's possible high frequency can hurt the ears. We live in different world that's why we need machine as translator that might be complicated.
 
 * Linux 
 <pre> set sample format to
@@ -215,17 +217,22 @@ Default format set to 24bit, 192000Hz (Studio Quality) </pre>
 Select a sample rate to 176400.0 Hz or 192000.0 Hz
 </pre>
 
+Commonly used sample rate:
+| 44100Hz*(n) | 48000Hz*(n) |
+| --- | --- |
+| 88200Hz | 96000Hz |
+| 132300Hz | 144000Hz |
+| 176400Hz | 192000Hz |
+
 If your audio hardware in your system doesn't support high sample rate audio produce crackling noise (e.g. poor/old built in internal DAC/Speaker), you can use a capable third-party digital audio interface (Headset/DAC/Speaker)
 
 # miscellaneous
-
-Sounds like i talking bias right because you couldn't tell the different 44100Hz/48000Hz vs 176400Hz/192000Hz? Human hearings limited to 20000Hz? That's not completely true. It's about in-machine processing not the human listening experience.
 
 CD Quality standard is 441000Hz that's more than enough? Why CD still using 441000Hz? because of compatibility less complicated, the old audio portable and old sound system device might couldn't process more than 16bits 44100Hz due to algorithm limitation on the hardware side. Did you know the old vinyl? there's still leaving a noise frequency artifact.
 
 Look at [this](http://src.infinitewave.ca/), an example 96Khz files compress to 44.1Khz, select converter to FFmpeg (soxr) vs FFmpeg (swr), test result select to sweep. you can look the artifact wave caused by compression in there. Of course compression/lossy reduce audio quality better using lossless but the goal is for storage and still on acceptable audible range of human ear.
 
-Advantage using 48 kHz sample rate
+Advantage using 48 kHz sample rate;
 * offers slightly more headroom for tweaking
 * when computer performs processing digital source into sound, generally there's a signal lost (wired/wireless connection) before reaches to the output (speaker). The goal is to reduce effect of signal degradation.
 * reduce aliasing to prevent filter aplied caused by clipping.
