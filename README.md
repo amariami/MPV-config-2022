@@ -206,7 +206,7 @@ To maintaining good hearing experience i suggested using Floating-Point processi
 
 * Windows
 <pre>Speaker/Headphones in sound Setting
-Default format set to 24bit, 19200Hz (Studio Quality) </pre>
+Default format set to 24bit, 192000Hz (Studio Quality) </pre>
 
 * [Mac](https://support.apple.com/en-us/HT202730) 
 <pre>Use this device for sound output
