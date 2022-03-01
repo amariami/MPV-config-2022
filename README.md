@@ -1,5 +1,11 @@
 # MPV-config-2022
+
+Read [mpv.io manual stable for stable version, master for experimental version](https://mpv.io/manual/), [MPV wiki](https://github.com/mpv-player/mpv/wiki), [Mpv FAQ](https://github.com/mpv-player/mpv/wiki/FAQ), 
+
 Just an archive. Generally use with SVP (Smooth Video Project) on Linux (*barebone free license*) and MAC/Windows (*Paid but you could try a trial version*), SVP uses the same [frame interpolation technique](https://en.wikipedia.org/wiki/Motion_interpolation) as available in high-end TVs and projectors (see “TrimensionDNM”, “Motion Plus”, “Motionflow” and others). Though it can be use without SVP.
+
+Might be usefull use `--sigmoid-upscaling` `correct-downscaling=yes` `linear-downscaling=no`
+
 Don't forget to set rendering device according on your system `--vulkan-device=help` or `--d3d11-adapter-device=help`.
 
 E.g. select "NVIDIA GeForce GTX 1080 Ti" instead of "AMD Radeon(TM) Vega 10 Graphics" for rendering.
@@ -99,6 +105,14 @@ Calculation 8^N. *64x64x64 72x72x72 80x80x80 88x88x88 96x96x96 104x104x104 112x1
 
 [`--icc-cache-dir=~~~~~~~~~~~\`](https://mpv.io/manual/master/#options-icc-cache-dir)
 
+# Tone mapping
+
+You could use specifies the algorithm used for tone-mapping images onto the target display.
+
+[`--tone-mapping=...`](https://mpv.io/manual/master/#options-tone-mapping)
+
+[`--tone-mapping-param=...`](https://mpv.io/manual/master/#options-tone-mapping-param)
+
 # Refresh rate frequency
 
 Set display refresh rate only in your native Operating System. not recommended using [`--override-display-fps=...`](https://mpv.io/manual/master/#options-override-display-fps) sometimes it could ruin your video playback causing glitch and looks awful.
@@ -148,7 +162,7 @@ Of course it could be used for other frequency such as 48 Hertz, 72 Hertz, 96 He
 
 # Audio Quality
 
-To maintaining good hearing experience i suggested using Floating-Point processing instead of Integers. float (32/32 bits) @ 192000hz 
+To maintaining good hearing experience i suggested using Floating-Point processing instead of Integers. float (32/32 bits) @ 192000hz (*don't confused it's not same as mastering data*)
 
 [32bit Float Explained](https://www.sounddevices.com/32-bit-float-files-explained/)
 
@@ -157,7 +171,7 @@ To maintaining good hearing experience i suggested using Floating-Point processi
 * Linux 
 <pre> set sample format to
  f32le           PCM 32-bit floating-point little-endian (*prefered)
- f64le           PCM 64-bit floating-point little-endian
+ f64le           PCM 64-bit floating-point little-endian (*prefered)
  f32be           PCM 32-bit floating-point big-endian
  f64be           PCM 64-bit floating-point big-endian
  
@@ -173,26 +187,33 @@ Default format set to 24bit, 19200Hz (Studio Quality) </pre>
 Select a sample rate to 176400.0 Hz or 192000.0 Hz
 </pre>
 
-If your audio hardware in your system doesn't support high sample rate audio (e.g. poor/old built in internal DAC/Speaker), you can use a capable third-party digital audio interface (Headset/DAC/Speaker)
+If your audio hardware in your system doesn't support high sample rate audio produce crackling noise (e.g. poor/old built in internal DAC/Speaker), you can use a capable third-party digital audio interface (Headset/DAC/Speaker)
 
 # miscellaneous
 
 Sounds like i talking bias right because you couldn't tell the different 44100Hz/48000Hz vs 176400Hz/192000Hz? Human hearings limited to 20000Hz? That's not completely true. It's about in-machine processing not the human listening experience.
 
-Mostly i'am listening music streaming service like Spotify and Youtube Music. The Offline files like audio or video are in stereo lossy format such as Opus and AAC-LC, sample rate set to 48KHz because 44.1KHz produce cliping.
+CD Quality standard is 441000Hz that's more than enough? Why CD still using 441000Hz? because of compatibility less complicated, the old audio portable and old sound system device might couldn't process more than 16bits 44100Hz due to algorithm limitation on the hardware side. Did you know the old vinyl? there's still leaving a noise frequency artifact.
+
+Look at [this](http://src.infinitewave.ca/), an example 96Khz files compress to 44.1Khz, select converter to FFmpeg (soxr) vs FFmpeg (swr), test result select to sweep. you can look the artifact wave caused by compression in there. Of course compression/lossy reduce audio quality better using lossless but the goal is for storage and still on acceptable audible range of human ear.
 
 Advantage using 48 kHz sample rate
 * offers slightly more headroom for tweaking
 * when computer performs processing digital source into sound, generally there's a signal lost (wired/wireless connection) before reaches to the output (speaker). The goal is to reduce effect of signal degradation.
-* reduce aliasing to prevent filter aplied caused by clipping
-* make it possible to capture inaudible sound into audible. Need prove? You could try recording a sound from electronic cleaning machine called "ultrasonic cleaner" with your gadget
+* reduce aliasing to prevent filter aplied caused by clipping.
+* make it possible to capture inaudible sound into audible. Need prove? You could try recording a sound from electronic cleaning machine called "ultrasonic cleaner" with your gadget.
+
+I listening music on streaming service like Amazon, Spotify and  Youtube Music. The Offline (When i'm not connecting to the internet) audio or video files are in stereo lossy format such as Opus and AAC-LC, (i'am not a fan of MP3 anymore it's old, don't like exhale/HE-AAC it cause clipping), e.g. use software called "Spek - Acoustic Spectrum Analyzer" On AAC-LC using FFmpeg 441KHz cut Frequency up to 20KHz, while Opus are set to 48KHz cut frequency up to 24KHz, so there's some headroom using 48KHz sample rate as final product.
+
+This is a modern day, we don't go back to the past, we learn from the past. I don't have old school audio equiptment anymore.
+48KHz is a standard for video. I hope you could agree with that.
 
 reference
 * [Nyquist frequency](https://en.wikipedia.org/wiki/Nyquist_frequency)
 * [Oversampling in Digital Audio by Philip Mantione](https://theproaudiofiles.com/oversampling/)
 * [Nyquist–Shannon sampling theorem](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem)
 * [Upsampling vs. Oversampling for Digital Audio](https://www.audioholics.com/audio-technologies/upsampling-vs-oversampling-for-digital-audio)
-* (https://homestudiobasics.com/bit-depth-vs-sample-rate-made-simple/)
+* [bit depth vs sample rate](https://homestudiobasics.com/bit-depth-vs-sample-rate-made-simple/)
 * [Digital Audio Basics: Audio Sample Rate and Bit Depth by Griffin Brown](https://www.izotope.com/en/learn/digital-audio-basics-sample-rate-and-bit-depth.html)
 * [DSD to PCM Conversion](https://audiopraise.com/services/fpga-cores/dsd-to-pcm-conversion/)
 * [Hydrogenaudio Resampling](https://wiki.hydrogenaudio.org/index.php?title=Resampling)
