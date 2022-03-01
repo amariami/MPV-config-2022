@@ -107,7 +107,7 @@ Calculation 8*(N). *64x64x64 72x72x72 80x80x80 88x88x88 96x96x96 104x104x104 112
 
 [`--icc-cache-dir=~~~~~~~~~~~\`](https://mpv.io/manual/master/#options-icc-cache-dir)
 
-[`icc-profile=...`](https://mpv.io/manual/stable/#options-icc-profile)(*Optional*) #I suggested don't use that if your display support ICC by default, it can ruin motion on video playback caused glitch. Except your system doesn't support color management.
+[`icc-profile=...`](https://mpv.io/manual/stable/#options-icc-profile)(*Optional*) #I suggested don't use that if your display support ICC by default, it can ruin motion on video playback caused glitch. Except your system doesn't support color management. On Mac or Windows you shouldn't need that, use auto
 
 # Deband/Debanding & Grain
 
