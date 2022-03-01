@@ -119,7 +119,7 @@ Set display refresh rate only in your native Operating System. not recommended u
 
 Set mpv.conf `--video-sync=display-resample` + `--tscale=oversample`
 
-or `--tscale-blur=0.6991556596428412` + `--tscale=box`
+or `--tscale-blur=0.6991556596428412` + `--tscale=box` (*prefered*)
 
 or `--tscale-clamp=0.0` + `--tscale-radius=1.1` #(lower e.g. 0.955 = sharper; higher 1.005 = smooth; 1.0 = smooth; 1.01 =
  smoother; 1.1 might smoother + `--tscale-window=sphinx` #(or "quadric") +`--tscale=box`
