@@ -4,7 +4,7 @@ Read [mpv.io manual stable for stable version, master for experimental version](
 
 Just an archive. Generally use with SVP (Smooth Video Project) on Linux (*barebone free license*) and MAC/Windows (*Paid but you could try a trial version*), SVP uses the same [frame interpolation technique](https://en.wikipedia.org/wiki/Motion_interpolation) as available in high-end TVs and projectors (see “TrimensionDNM”, “Motion Plus”, “Motionflow” and others). Though it can be use without SVP.
 
-Might be usefull use `--sigmoid-upscaling` `correct-downscaling=yes` `linear-downscaling=no`
+Might be usefull `--sigmoid-upscaling` `correct-downscaling=yes` `linear-downscaling=no`
 
 Don't forget to set rendering device according on your system `--vulkan-device=help` or `--d3d11-adapter-device=help`.
 
