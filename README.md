@@ -156,7 +156,7 @@ or `--tscale-clamp=0.0` + `--tscale-radius=1.1` #(lower e.g. 0.955 = sharper; hi
  
 to get a list use `--tscale=help`, `--scale-window=help`, 
 
-Guide [eXmendiC wordpress](https://iamscum.wordpress.com/guides/videoplayback-guide/mpv-conf/), [kokomins wordpress](https://kokomins.wordpress.com/2019/10/14/mpv-config-guide/)
+Guide [eXmendiC wordpress](https://iamscum.wordpress.com/guides/videoplayback-guide/mpv-conf/), [kokomins wordpress refresh rate frequency](https://kokomins.wordpress.com/2019/10/26/svp-4-setup-guide-for-smooth-60-fps-anime-playback/#why-should-i-never-set-svp-to-60-fps), [kokomins mpv guide](https://kokomins.wordpress.com/2019/10/14/mpv-config-guide/)
 
 # Interpolation/Smooth motion
 
