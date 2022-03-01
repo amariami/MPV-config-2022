@@ -93,7 +93,7 @@ Otherwise don't mind when you couldn't tell the different dxva2-copy and d3d11va
 *In general, it's very strongly advised to avoid hardware decoding unless absolutely necessary, i.e. if your CPU is insufficient to decode the file in questions. If you run into any weird decoding issues, frame glitches or discoloration, and you have `--hwdec=...` turned on, the first thing you should try is disabling it.*
 
 # load the 3D LUTs created from the ICC profile
-[`--icc-profile-auto`](https://mpv.io/manual/master/#options-icc-profile-auto)
+[`--icc-profile-auto`](https://mpv.io/manual/master/#options-icc-profile-auto) (**preferred*)
 
 [`--icc-intent=...`](https://mpv.io/manual/master/#options-icc-intent)
 
@@ -106,6 +106,8 @@ Calculation 8*(N). *64x64x64 72x72x72 80x80x80 88x88x88 96x96x96 104x104x104 112
 [`--scaler-lut-size=10`](https://mpv.io/manual/master/#options-scaler-lut-size)
 
 [`--icc-cache-dir=~~~~~~~~~~~\`](https://mpv.io/manual/master/#options-icc-cache-dir)
+
+[`icc-profile=...`](https://mpv.io/manual/stable/#options-icc-profile)(*Optional*) #I suggested don't use that if your display support ICC by default, it can ruin motion on video playback caused glitch. Except your system doesn't support color management.
 
 # Deband/Debanding & Grain
 
@@ -147,7 +149,7 @@ Set display refresh rate only in your native Operating System. not recommended u
 
 Set mpv.conf `--video-sync=display-resample` + `--tscale=oversample`
 
-or `--tscale-blur=0.6991556596428412` + `--tscale=box` (*prefered*)
+or `--tscale-blur=0.6991556596428412` + `--tscale=box` (**preferred*)
 
 or `--tscale-clamp=0.0` + `--tscale-radius=1.1` #(lower e.g. 0.955 = sharper; higher 1.005 = smooth; 1.0 = smooth; 1.01 =
  smoother; 1.1 might smoother + `--tscale-window=sphinx` #(or "quadric") +`--tscale=box`
@@ -200,8 +202,8 @@ Sounds like i talking bias right because you couldn't tell the different 44100Hz
 
 * Linux 
 <pre> set sample format to
- f32le           PCM 32-bit floating-point little-endian (*prefered)
- f64le           PCM 64-bit floating-point little-endian (*prefered)
+ f32le           PCM 32-bit floating-point little-endian (*preferred)
+ f64le           PCM 64-bit floating-point little-endian (*preferred)
  f32be           PCM 32-bit floating-point big-endian
  f64be           PCM 64-bit floating-point big-endian
  
