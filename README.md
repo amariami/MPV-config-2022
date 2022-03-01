@@ -60,6 +60,8 @@ or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler256_CAS-RGB.glsl;;~~~~~~~~~~~\sh
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\FSRCNNX_x2_16-0-4-1.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl;~~~~~~~~~~~\shaders\CAS-RGB.glsl"`
 
+or `--glsl-shaders="~~~~~~~~~~~\shaders\FSRCNNX_x2_56-16-4-1.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl"`
+
 or `--glsl-shaders="~~~~~~~~~~~\shaders\FSRCNN_x2_r1_32-0-2.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl"`
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\FSRCNN_x2_r2_32-0-2.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl;~~~~~~~~~~~\shaders\CAS-RGB.glsl"`
