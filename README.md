@@ -109,7 +109,7 @@ Calculation 8*(N). *64x64x64 72x72x72 80x80x80 88x88x88 96x96x96 104x104x104 112
 
 [`--icc-profile=...`](https://mpv.io/manual/stable/#options-icc-profile)(*Optional*) #I suggested don't use that if your display support ICC by default, it can ruin motion on video playback caused glitch. Except your system doesn't support color management. On Mac or Windows you shouldn't need that, use auto
 
-[`--fbo-format=...`](https://mpv.io/manual/master/#options-fbo-format) #rgb16f, rgb32f, rgba16f, rgba16hf, rgba32f
+[`--fbo-format=...`](https://mpv.io/manual/master/#options-fbo-format) #rgb16f, rgb32f, rgba16f, rgba16hf, rgba32f. f means float
 
 [`--d3d11-output-format=...`](https://mpv.io/manual/master/#options-d3d11-output-format) #rgba16f for d3d11
 
@@ -166,7 +166,9 @@ Guide [eXmendiC wordpress](https://iamscum.wordpress.com/guides/videoplayback-gu
 
 Need [`--video-sync=display-...`](https://mpv.io/manual/master/#options-video-sync) to enable MPV built in [interpolation](https://mpv.io/manual/master/#options-interpolation) e.g `--video-sync=display-resample`
 
-Calculation for 24 fps = 24*(N), 25 fps = 25*(N), 30 fps = 30*(N). Explanation guide in [here](https://kokomins.wordpress.com/2019/10/26/svp-4-setup-guide-for-smooth-60-fps-anime-playback/#monitor-refresh-rate-extended)
+Calculation for 24 fps = 24*(N), 25 fps = 25*(N), 30 fps = 30*(N). 
+
+Explanation guide in [here](https://kokomins.wordpress.com/2019/10/26/svp-4-setup-guide-for-smooth-60-fps-anime-playback/#monitor-refresh-rate-extended)
 
 for 25 fps video set [`--video-sync-max-video-change=...`](https://mpv.io/manual/master/#options-video-sync-max-video-change)
 
@@ -195,11 +197,11 @@ for [`vo=gpu-next`](gpu-renderer-options) see [#9427](https://github.com/mpv-pla
 1. you can extend battery life and reduce power consuption on mobile device 
 2. reduce unnecessary resource in Dekstop PC. If your system is High-End device you could do complicated settings and heavy scripts which is still difficult to achieve when using higher resolution and refresh rate more than 48 Hertz.
 
-* On low end device 2C/4T CPU or 4C/4T with SVP the maximum display resolution scale without eating too much resource maybe between HD (1280 x 720) up to FHD (1920 x 1080p).
+* On low end device 2C/4T CPU or 4C/4T with SVP the maximum display resolution scale without eating too much resource maybe between WXGA (1280 x 720) up to FHD (1920 x 1080p).
 
-* If your see a significant framedrop with high display resolution try lowering that, make sure still on the same range aspect ratio (e.g 16:9) then set "decrease to screen size" on SVP
+* If your see a significant framedrop with high display resolution try lowering that, make sure still on the same range aspect ratio (e.g 16:9 / 16:10) then set "decrease to screen size" on SVP
 
-Example
+Singularity;
 | Width | Height | AR | Known as |  | Width | Height | AR | Known as |
 | --- | --- | --- | --- | --- | --- | --- | --- |  --- |
 | 3480 | 2160 | 16:9 | UHD |  | 5464 | 3072 | 16:9 |  |
@@ -217,10 +219,10 @@ Example
 | 480 | 270 | 16:9 |  |  | 1280 | 768 | 16:0 | WXGA |
 |  |  |  |  |  | 640 | 384 | 16:10 |  |
 
-[Graphics display resolution](https://en.wikipedia.org/wiki/Graphics_display_resolution)
-[Resultion scale calculator](https://bneijt.nl/pr/resolution-scale-calculator/)
-[Wikipedia common resolution](https://en.wikipedia.org/wiki/List_of_common_resolutions), 
-[list of 16:9 resolutions](https://levvvel.com/169-resolutions/)
+* [Graphics display resolution](https://en.wikipedia.org/wiki/Graphics_display_resolution)
+* [Resultion scale calculator](https://bneijt.nl/pr/resolution-scale-calculator/)
+* [Wikipedia common resolution](https://en.wikipedia.org/wiki/List_of_common_resolutions)
+* [list of 16:9 resolutions](https://levvvel.com/169-resolutions/)
 
 * The best case scenario is running SVP On 
 1. PC Dekstop CPU with i-GPU (integrated GPU) such as Intel-HD/Iris-Xe/Radeon Vega + Discrete/Dedicated Graphic.
@@ -230,6 +232,7 @@ Process can run separately so it doesn't overload devices on one side. SVP can u
 
 [`AMD Hybrid Graphics`](https://en.wikipedia.org/wiki/AMD_Hybrid_Graphics)
 [`Nvidia Optinus`](https://en.wikipedia.org/wiki/Nvidia_Optimus)
+[#7336](https://github.com/mpv-player/mpv/issues/7336), []()
 
 # Intermezzo: the lowest device i've ever tried.
 
