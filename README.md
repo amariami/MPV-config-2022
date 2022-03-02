@@ -190,15 +190,25 @@ Of course it could be used for other frequency such as 48 Hertz, 72 Hertz, 96 He
 
 * The best case scenario is running SVP On PC Dekstop CPU with i-GPU (integrated GPU) such as Intel-HD/Iris-Xe/Radeon Vega + Discrete/Dedicated Graphic or Mobile laptop with Hybrid Graphics. Process can run separately so it doesn't overload devices on one side. SVP can use rendering device to i-GPU then do their own, MPV can do decoding to Discrete or Hybrid Graphics. It give headroom for CPU Core to breathe freely. You can see on monitoring system on Linux terminal or MAC activity monitor or Windows task manager/HWiNFO. If doesn't work you could set the Output display using i-GPU connecting HDMI or Display Port into the motherboard instead Discrete/Dedicated GPU.
 
-# Audio Quality (*#optional*)
+# * Intermezzo; the lowest device i've ever tried
 
-To maintaining good hearing experience i suggested using Floating-Point processing instead of Integers. float (32/32 bits) @ 192000hz (*don't confused it's not same as mastering data*)
+| Manufactured | Product | Core | Thread | TDP | PL1 | PL2 | Base | Boost | L1 | L2 | L3 | L4 | Integrated Graphic | PCI-E | Memory | Unlocked | Dedicated GPU |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| AMD | A8-3500M | 4 | 4 | 35W | N/A | N/A | 1.50 GHz | 2.40 GHz | 256KB + 256KB | 4MB | N/A | N/A | Radeon HD 6620G | 2.0 | DDR3L | Yes | N/A |
+| Intel | 6006U | 2 | 4 | 15W | 15W | 25W | 2.00 GHz | N/A | 64KB + 64KB | 512KB | 3MB | N/A | HD Graphics 520 | 3.0 | DDR4 | No | AMD Radeon R5 M430 (Hybrid)
+ |
+* On Linux it's hit and miss using propietary or open source driver. I won't make a general recommendation on which to use, but here are some cases, in which certain drivers are better than others.
+* On windows 10 on both CPU using DXVA2, D3D11 or Vulkan, run flawesly. Windows 8.1 I didn't test it yet 
+* Mac, sorry I don't have an old Macbookt
+* If your low end hardware is better it shouldn't be a problem
 
-[32bit Float Explained](https://www.sounddevices.com/32-bit-float-files-explained/)
+# set Audio Sample Rate (#optional)
 
-*Don't confuse Sample rate in audio recording/mastering/converting files vs Oversampling Rate on digital to analog signaling*, that's different. Oversampling is a technique upsampling based on the original source (sample rate) to reconstruct signal to reduce audio artifacts distortion and reduce aliasing in Nyquist frequency. Higher levels of oversampling results in less aliasing occurring in the audible range. 
+To maintaining acceptable hearing experience i suggested using Floating-Point processing instead of Integers. Float (32/32 bits) @ 192000hz [32bit Float Explained](https://www.sounddevices.com/32-bit-float-files-explained/), [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754)
 
-Sounds like i talking bias right because you couldn't tell the different 44100Hz/48000Hz vs 176400Hz/192000Hz? Human hearings limited to 20000Hz? That's not completely true. It's about in-machine processing not the limitation of human audible frequency range, we can't hear or playing digital audio format like you eating a banana because we don't live in virtual world. If we live in cyberspace and limitations as human in general still exist, it's possible high frequency can hurt the ears. We live in different world that's why we need machine as translator that might be complicated.
+*Don't confuse Sample rate/Sampling rate in audio recording/mastering/converting files vs Oversampling on digital to analog signaling*, that's different. Oversampling is a technique upsampling based on the original source (sample rate) to reconstruct signal to reduce audio artifacts distortion and reduce aliasing in Nyquist frequency. Higher levels of oversampling results in less aliasing occurring in the audible range. 
+
+Sounds like i talking bias right because you couldn't tell the different 44100Hz/48000Hz vs 176400Hz/192000Hz? Human hearings limited to 20000Hz? That's not completely true. It's about in-machine processing not the limitation of human audible frequency range, we can't hear or playing digital audio format like you eating a banana because we don't live in virtual world. If we live in cyberspace and limitations as human in general still exist, it's possible high frequency can hurt our ears. We live in different world that's why we need machine as translator that might be complicated. 
 
 * Linux 
 <pre> set sample format to
@@ -226,21 +236,24 @@ Commonly used sample rate:
 | 132300Hz | 144000Hz |
 | 176400Hz | 192000Hz |
 
-If your audio hardware in your system doesn't support high sample rate audio produce crackling noise (e.g. poor/old built in internal DAC/Speaker), you can use a capable third-party digital audio interface (Headset/DAC/Speaker)
+If your audio hardware in your system doesn't support high sample rate audio produce crackling noise (e.g. poor/old built in internal DAC/Speaker), you could use a capable third-party digital audio interface (Headset/DAC/Speaker).
 
 # miscellaneous
 
+To be clear I'm not a fan of narcissistic audiophile (audiophilaceboo, audiofools). Here's a [nice topic](https://www.ecoustics.com/video/audiophiles-listen/)
+
 CD Quality standard is 441000Hz that's more than enough? Why CD still using 441000Hz? because of compatibility less complicated, the old audio portable and old sound system device might couldn't process more than 16bits 44100Hz due to algorithm limitation on the hardware side. Did you know the old vinyl? there's still leaving a noise frequency artifact.
 
-Look at [this](http://src.infinitewave.ca/), an example 96Khz files compress to 44.1Khz, select converter to FFmpeg (soxr) vs FFmpeg (swr), test result select to sweep. you can look the artifact wave caused by compression in there. Of course compression/lossy reduce audio quality better using lossless but the goal is for storage and still on acceptable audible range of human ear.
+Look at [this](http://src.infinitewave.ca/), an example 96Khz files compress to 44.1Khz, select converter to FFmpeg 4.2.2 (soxr) vs FFmpeg 4.2.2 (swr), test result select to sweep. you can look the artifact wave caused by compression in there. Of course compression/lossy reduce audio quality better using lossless right? absolutely not the goal is for less storage and still on acceptable audible range of human ear.
 
 Advantage using 48 kHz sample rate;
 * offers slightly more headroom for tweaking
 * when computer performs processing digital source into sound, generally there's a signal lost (wired/wireless connection) before reaches to the output (speaker). The goal is to reduce effect of signal degradation.
 * reduce aliasing to prevent filter aplied caused by clipping.
 * make it possible to capture inaudible sound into audible. Need prove? You could try recording a sound from electronic cleaning machine called "ultrasonic cleaner" with your gadget.
+* reduce audio distortion effect caused by compression in cloud sharing server (if server perfoms compression to reduce bandwith)
 
-I listening music on streaming service like Amazon, Spotify and  Youtube Music. The Offline (When i'm not connecting to the internet) audio or video files are in stereo lossy format such as Opus and AAC-LC, (i'am not a fan of MP3 anymore it's old, don't like exhale/HE-AAC it cause clipping), e.g. use software called "Spek - Acoustic Spectrum Analyzer" On AAC-LC using FFmpeg 441KHz cut Frequency up to 20KHz, while Opus are set to 48KHz cut frequency up to 24KHz, so there's some headroom using 48KHz sample rate as final product.
+I listening music on streaming service like Amazon, Spotify and  Youtube Music. The Offline (When i'm not connecting to the internet) audio or video files are in stereo lossy format such as Opus (afaik google get better implementation in that) and AAC-LC (most streaming music use that), (i'am not a fan of MP3 anymore it's old, don't like exhale/HE-AAC it cause clipping), e.g. use software called "Spek - Acoustic Spectrum Analyzer" On AAC-LC using FFmpeg 441KHz cut Frequency up to 20KHz, while Opus are set to 48KHz cut frequency up to 24KHz, so there's some headroom using 48KHz sample rate as final product.
 
 This is a modern day, we don't go back to the past, we learn from the past. I don't have old school audio equiptment anymore.
 48KHz is a standard for video. I hope you could agree with that.
