@@ -199,7 +199,7 @@ Of course it could be used for other frequency such as 48 Hertz, 72 Hertz, 96 He
  |
 * On Linux it's hit and miss using propietary or open source driver. I won't make a general recommendation on which to use, but here are some cases, in which certain drivers are better than others.
 * On windows 10 on both CPU using DXVA2, D3D11 or Vulkan, run flawesly. Windows 8.1 I didn't test it yet 
-* Mac, sorry I don't have an old Macbookt
+* Mac, sorry I don't have an old Macbook
 * If your low end hardware is better it shouldn't be a problem
 
 # set Audio Sample Rate (#optional)
