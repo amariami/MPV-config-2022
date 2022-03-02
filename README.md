@@ -107,7 +107,11 @@ Calculation 8*(N). *64x64x64 72x72x72 80x80x80 88x88x88 96x96x96 104x104x104 112
 
 [`--icc-cache-dir=~~~~~~~~~~~\`](https://mpv.io/manual/master/#options-icc-cache-dir)
 
-[`icc-profile=...`](https://mpv.io/manual/stable/#options-icc-profile)(*Optional*) #I suggested don't use that if your display support ICC by default, it can ruin motion on video playback caused glitch. Except your system doesn't support color management. On Mac or Windows you shouldn't need that, use auto
+[`--icc-profile=...`](https://mpv.io/manual/stable/#options-icc-profile)(*Optional*) #I suggested don't use that if your display support ICC by default, it can ruin motion on video playback caused glitch. Except your system doesn't support color management. On Mac or Windows you shouldn't need that, use auto
+
+[`--fbo-format=...`](https://mpv.io/manual/master/#options-fbo-format) #rgb16f, rgb32f, rgba16f, rgba16hf, rgba32f
+
+[`--d3d11-output-format=...`](https://mpv.io/manual/master/#options-d3d11-output-format) #rgba16f for d3d11
 
 # Deband/Debanding & Grain
 
@@ -166,36 +170,73 @@ Calculation for 24 fps = 24*(N), 25 fps = 25*(N), 30 fps = 30*(N). Explanation g
 
 for 25 fps video set [`--video-sync-max-video-change=...`](https://mpv.io/manual/master/#options-video-sync-max-video-change)
 
-With SVP set display to 48 Hertz in your PC;
-* do "framerate conversion to Movie X2/Fixed Frame rate 48 fps" on 24 fps source 
-* or "framerate conversion to Movie X2/Fixed Frame rate 60 fps" on 30 fps source
-* for me no reason using more than doubling frame rate interpolation.
-* On Linux sytem you already know which one is similiar parameter using .vpy script, `--input-ipc-server=mpvpipe`
+* On low end device 2C/4T CPU or 4C/4T you could use 1 or 2 shaders
 
-Advantage set display frequency to 48 Hertz you can extend battery life, reduce power consumption especially on mobile laptop and reduce too much resource in PC. If your system is High-End device you could do complicated settings and use heavy scripts which is still difficult to achieve when using refresh rate more than 48 Hertz.
+* MPV only (Without SVP)
 
-`--interpolation=yes` or `--interpolation=no` or don't write this in mpv.conf leaving MPV player do their own
-in my case when running MPV Player only without SVP get very good result while using 59.999/60 Hertz display refresh rate.
+`vo=gpu`, [`gpu-api=...`]()`--interpolation=yes`. Set Display Frequency on your monitor to 59.999/60/72 Hertz etc. You should try by yourself 
 
-Of course it could be used for other frequency such as 48 Hertz, 72 Hertz, 96 Hertz, 140 Hertz, 240 Herts and so on. However i can't guarantee if it works correctly or not you should try by yourself.
+for [`vo=gpu-next`](gpu-renderer-options) see [#9427](https://github.com/mpv-player/mpv/issues/9427),[`--interpolation-preserve`](https://mpv.io/manual/master/#options-interpolation-preserve), [`--image-lut=...`](https://mpv.io/manual/master/#options-image-lut),[`--image-lut-type=...`](https://mpv.io/manual/master/#options-image-lut-type), [`--target-colorspace-hint`](https://mpv.io/manual/master/#options-target-colorspace-hint), [`--tone-mapping=... #spline/bt.2446a`](https://mpv.io/manual/master/#options-tone-mapping), [`--inverse-tone-mapping`](https://mpv.io/manual/master/#options-inverse-tone-mapping), [`--tone-mapping-crosstalk=...`](https://mpv.io/manual/master/#options-tone-mapping-crosstalk), [`--tone-mapping-mode=..`](https://mpv.io/manual/master/#options-gamut-mapping-mode), [`--allow-delayed-peak-detect`](https://mpv.io/manual/master/#options-allow-delayed-peak-detect), [`--lut=...`](https://mpv.io/manual/master/#options-lut), [`--lut-type=`](https://mpv.io/manual/master/#options-lut-type)
 
-* With SVP 4 you could increase performance and achieve very good smooth motion interpolation use Image scaling "Decrease to screen size". Select image scaling mode in the "Alter video frame size block" then choose "Decrease to HD" or "Decrease to screen" refresh rate set to 48 Hertz and use `--video-sync=display-resample`. 
+* MPV with SVP
 
-* If your screen resolution is FHD (1920 x 1080) and see drop frames or glitch you could lowering display resolution to HD+ (1600 x 900) or WXGA (1360 x 765 / 1366 x 768) or HD (1280x720) to gain more performace make sure still on same display aspect ratio range e.g. 16:9
+`--input-ipc-server=mpvpipe` `--video-sync=display-resample` `--interpolation=yes` or `--interpolation=no` or write this in mpv.conf let mpv do their own. 
 
-* If your screen resolution is more than FHD like 2K/QHD (2048 × 1080 / 2560 x 1440) and see drop frames you could lowering display resolution to FHD (1920 x 1080) for gain more performace make sure that still on same display aspect ratio range such as 16:9.
-"4K-UHD/DCI-4K (3840 x 2160 / 4096 x 2304)" reduce to "3K/QHD+ (3072 x 1728 / 3200 x 1800)", "3K/QHD+ (3072 x 1728 / 3200 x 1800)" reduce to "2K/QHD (2048 × 1080 / 2560 x 1440)"
+1. If your sytem not enough interpolating fps depending on frequency display such as 60Hz or more, you could lowering Display Frequency to 48Hz
+2. If your video source higher resolution than your screen, set Reduce Image scaling on "Frame Size" menu. In Alter video frame size block menu Set alter video framesize "Decrease to screen" 
+3. If still get framedrop set "Decrease to HD"
+4. Do "framerate conversion to Movie X2" or Fixed Frame rate 48 fps for 24 fps source 
+5. Do "framerate conversion to Movie X2" or Fixed Frame rate 60 fps for 30 fps source
+6. Not recommending use an interpolation more than 30 fps video with SVP, sometimes resulting awful motion
+7. For me no reason using more than doubling frame rate interpolation.
+8. On Linux sytem you already know which one is similiar parameter using .vpy script.
 
-[Wikipedia common resolution](https://en.wikipedia.org/wiki/List_of_common_resolutions), [list of 16:9 resolutions](https://levvvel.com/169-resolutions/)
+* Advantage set display frequency to 48 Hertz and lowering display resolution 
+1. you can extend battery life and reduce power consuption on mobile device 
+2. reduce unnecessary resource in Dekstop PC. If your system is High-End device you could do complicated settings and heavy scripts which is still difficult to achieve when using higher resolution and refresh rate more than 48 Hertz.
 
-* The best case scenario is running SVP On PC Dekstop CPU with i-GPU (integrated GPU) such as Intel-HD/Iris-Xe/Radeon Vega + Discrete/Dedicated Graphic or Mobile laptop with Hybrid Graphics. Process can run separately so it doesn't overload devices on one side. SVP can use rendering device to i-GPU then do their own, MPV can do decoding to Discrete or Hybrid Graphics. It give headroom for CPU Core to breathe freely. You can see on monitoring system on Linux terminal or MAC activity monitor or Windows task manager/HWiNFO. If doesn't work you could set the Output display using i-GPU connecting HDMI or Display Port into the motherboard instead Discrete/Dedicated GPU.
+* On low end device 2C/4T CPU or 4C/4T with SVP the maximum display resolution scale without eating too much resource maybe between HD (1280 x 720) up to FHD (1920 x 1080p).
 
-# * Intermezzo; the lowest device i've ever tried
+* If your see a significant framedrop with high display resolution try lowering that, make sure still on the same range aspect ratio (e.g 16:9) then set "decrease to screen size" on SVP
+
+Example
+| Width | Height | AR | Known as |  | Width | Height | AR | Known as |
+| --- | --- | --- | --- | --- | --- | --- | --- |  --- |
+| 3480 | 2160 | 16:9 | UHD |  | 5464 | 3072 | 16:9 |  |
+| 3072 | 1728 | 16:9 |  |  | 2732 | 1536 | 16:9 |  |
+| 2160 | 1440 | 16:9 | WQHD |  | 1366 | 768 | 16:9 | HD |
+| 2048 | 1152 | 16:9 | QWXGA |  | 683 | 384 | 16:9 |  |
+| 1920 | 1080 | 16:9 | FHD |  |  |  |  |  |
+| 1536 | 864 | 16:9 |  |  | 5440 | 3072 | 16:9 |  |
+| 1280 | 720 | 16:9 | WXGA |  | 2720 | 1536 | 16:9 |  |
+| 1024 | 576 | 16:9 | PAL |  | 1360  | 768 | 16:9 | HD |
+| 960 | 540 | 16:9 |  |  | 680 | 384 | 16:9 |  |
+| 768 | 430 | 16:9 |  |  |  |  |  |  |
+| 640 | 360 | 16:9 |  |  | 5120 | 3072 | 16:10 |  |
+| 512 | 288 | 16:9 |  |  | 2560 | 1536 | 16:10 |  |
+| 480 | 270 | 16:9 |  |  | 1280 | 768 | 16:0 | WXGA |
+|  |  |  |  |  | 640 | 384 | 16:10 |  |
+
+[Graphics display resolution](https://en.wikipedia.org/wiki/Graphics_display_resolution)
+[Resultion scale calculator](https://bneijt.nl/pr/resolution-scale-calculator/)
+[Wikipedia common resolution](https://en.wikipedia.org/wiki/List_of_common_resolutions), 
+[list of 16:9 resolutions](https://levvvel.com/169-resolutions/)
+
+* The best case scenario is running SVP On 
+1. PC Dekstop CPU with i-GPU (integrated GPU) such as Intel-HD/Iris-Xe/Radeon Vega + Discrete/Dedicated Graphic.
+2. Mobile laptop with Hybrid Graphic/Dedicated Graphic
+
+Process can run separately so it doesn't overload devices on one side. SVP can use rendering device to i-GPU then do their own, MPV can do decoding to Discrete or Hybrid Graphics. It give headroom for CPU Core to breathe freely. You can see on monitoring system on Linux terminal or MAC activity monitor or Windows task manager/HWiNFO. 
+
+[`AMD Hybrid Graphics`](https://en.wikipedia.org/wiki/AMD_Hybrid_Graphics)
+[`Nvidia Optinus`](https://en.wikipedia.org/wiki/Nvidia_Optimus)
+
+# Intermezzo: the lowest device i've ever tried.
 
 | Manufactured | Product | Core | Thread | TDP | PL1 | PL2 | Base | Boost | L1 | L2 | L3 | L4 | Integrated Graphic | PCI-E | Memory | Unlocked | Dedicated GPU |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| AMD | A8-3500M | 4 | 4 | 35W | N/A | N/A | 1.50 GHz | 2.40 GHz | 256KB + 256KB | 4MB | N/A | N/A | Radeon HD 6620G | 2.0 | DDR3L | Yes | N/A |
-| Intel | 6006U | 2 | 4 | 15W | 15W | 25W | 2.00 GHz | N/A | 64KB + 64KB | 512KB | 3MB | N/A | HD Graphics 520 | 3.0 | DDR4 | No | AMD Radeon R5 M430 (Hybrid)
+| AMD | A8-3500M | 4 | 4 | 35W | N/A | N/A | 1.50GHz | 2.40GHz | 256KB + 256KB | 4MB | N/A | N/A | Radeon HD 6620G | 2.0 | DDR3L | Yes | N/A |
+| Intel | i3-6006U | 2 | 4 | 15W | 15W | 25W | 2.00GHz | N/A | 64KB + 64KB | 512KB | 3MB | N/A | HD Graphics 520 | 3.0 | DDR4 | No | AMD Radeon R5 M430(Hybrid)
  |
 * On Linux it's hit and miss using propietary or open source driver. I won't make a general recommendation on which to use, but here are some cases, in which certain drivers are better than others.
 * On windows 10 on both CPU using DXVA2, D3D11 or Vulkan, run flawesly. Windows 8.1 I didn't test it yet 
@@ -208,7 +249,7 @@ To maintaining acceptable hearing experience i suggested using Floating-Point pr
 
 *Don't confuse Sample rate/Sampling rate in audio recording/mastering/converting files vs Oversampling on digital to analog signaling*, that's different. Oversampling is a technique upsampling based on the original source (sample rate) to reconstruct signal to reduce audio artifacts distortion and reduce aliasing in Nyquist frequency. Higher levels of oversampling results in less aliasing occurring in the audible range. 
 
-Sounds like i talking bias right because you couldn't tell the different 44100Hz/48000Hz vs 176400Hz/192000Hz? Human hearings limited to 20000Hz? That's not completely true. It's about in-machine processing not the limitation of human audible frequency range, we can't hear or playing digital audio format like you eating a banana because we don't live in virtual world. If we live in cyberspace and limitations as human in general still exist, it's possible high frequency can hurt our ears. We live in different world that's why we need machine as translator that might be complicated. 
+Sounds like i talking bias right because you couldn't tell the different 44100Hz/48000Hz vs 176400Hz/192000Hz? Human hearings limited to 20000Hz? That's not completely true. It's about in-machine processing not the limitation of human audible frequency range, we can't hear or playing digital audio format like you eating a banana because we don't live in virtual world. If we live in cyberspace and limitations as human in general still exist it's possible high frequency can hurt our ears. But we live in different world that's why we need machine as translator that might be complicated. 
 
 * Linux 
 <pre> set sample format to
