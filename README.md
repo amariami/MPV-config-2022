@@ -172,7 +172,29 @@ Explanation guide in [here](https://kokomins.wordpress.com/2019/10/26/svp-4-setu
 
 for 25 fps video set [`--video-sync-max-video-change=...`](https://mpv.io/manual/master/#options-video-sync-max-video-change)
 
-* On low end device 2C/4T CPU or 4C/4T you could use 1 or 2 shaders
+* Interlaced 
+ 
+ Calculation (N)/1.001
+ 
+24 fps /1.001 = 23.976023976023976023976023976024
+
+25 fps /1.001 = 24.975024975024975024975024975025
+
+30 fps /1.001 = 29.97002997002997002997002997003
+
+60 fps /1.001 = 59.94005994005994005994005994006
+
+ Wait... what the heck? what different 24 fps vs 23.976 fps?
+ 
+[The dumb U.S. broadcasting NTSC (National Television System Committee) History](https://en.wikipedia.org/wiki/NTSC#History)
+ 
+[Interlaced](https://en.wikipedia.org/wiki/Interlaced_video)
+ 
+[PAL (Phase Alternating Line)](https://en.wikipedia.org/wiki/PAL)
+ 
+[SÉCAM](https://en.wikipedia.org/wiki/SECAM)
+
+* On low end device 2C/4T CPU or 4C/4T you could use 1 or 2 shaders at same time.
 
 * MPV only (Without SVP)
 
@@ -286,7 +308,7 @@ If your audio hardware in your system doesn't support high sample rate audio pro
 
 To be clear I'm not a fan of narcissistic audiophile (audiophilaceboo, audiofools). Here's a [nice topic](https://www.ecoustics.com/video/audiophiles-listen/)
 
-CD Quality standard is 441000Hz that's more than enough? Why CD still using 441000Hz? because of compatibility less complicated, the old audio portable and old sound system device might couldn't process more than 16bits 44100Hz due to algorithm limitation on the hardware side. Did you know the old vinyl? there's still leaving a noise frequency artifact.
+CD Quality standard is 441000Hz that's more than enough? Why CD still using 441000Hz? because of compatibility less complicated, cheap. The old audio portable and old sound system device might couldn't process more than 16bits 44100Hz due to algorithm limitation on the hardware side. Did you know the old vinyl? there's still leaving a noise frequency artifact.
 
 Look at [this](http://src.infinitewave.ca/), an example 96Khz files compress to 44.1Khz, select converter to FFmpeg 4.2.2 (soxr) vs FFmpeg 4.2.2 (swr), test result select to sweep. you can look the artifact wave caused by compression in there. Of course compression/lossy reduce audio quality better using lossless right? absolutely not the goal is for less storage and still on acceptable audible range of human ear.
 
@@ -295,7 +317,7 @@ Advantage using 48 kHz sample rate;
 * when computer performs processing digital source into sound, generally there's a signal lost (wired/wireless connection) before reaches to the output (speaker). The goal is to reduce effect of signal degradation.
 * reduce aliasing to prevent filter aplied caused by clipping.
 * make it possible to capture inaudible sound into audible. Need prove? You could try recording a sound from electronic cleaning machine called "ultrasonic cleaner" with your gadget.
-* reduce audio distortion effect caused by compression in cloud sharing server (if server perfoms compression to reduce bandwith)
+* reduce audio distortion effect caused by compression in cloud sharing server down to 44100Hz (if server perfoms compression to reduce bandwith)
 
 I listening music on streaming service like Amazon, Spotify and  Youtube Music. The Offline (When i'm not connecting to the internet) audio or video files are in stereo lossy format such as Opus (afaik google get better implementation in that) and AAC-LC (most streaming music use that), (i'am not a fan of MP3 anymore it's old, don't like exhale/HE-AAC it cause clipping), e.g. use software called "Spek - Acoustic Spectrum Analyzer" On AAC-LC using FFmpeg 441KHz cut Frequency up to 20KHz, while Opus are set to 48KHz cut frequency up to 24KHz, so there's some headroom using 48KHz sample rate as final product.
 
