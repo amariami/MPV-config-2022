@@ -20,7 +20,7 @@ some FSR/CAS/NVidia Image Scaling has been changed the parameter to trigger upsc
 
 it can improving startup speed performance but the unused cache files may stick around, you should delete/remove it manually if cache is too much `--gpu-shader-cache-dir=~~~~~~~~~~~\shaders"`
 
-# * Might usable for low-end/entry level device such as Intel-HD, Vega3 or old Radeon HD APU mobile laptop (*not too old*)
+## * Might usable for low-end/entry level device such as Intel-HD, Vega3 or old Radeon HD APU mobile laptop (*not too old*)
 
 `--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA.glsl"`
 
@@ -34,7 +34,7 @@ or `--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA(EASU)PQ_CAS(RGB).glsl"`(*Modifi
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler.glsl"`
 
-# * Might usable for Mid-end device
+## * Might usable for Mid-end device
 
 `--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl"`
 
@@ -52,7 +52,7 @@ or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler.glsl"`
 
 or `--glsl-shaders="~~~~~~~~~~~\shaders\NVSharpen.glsl"`
 
-# * Might usable for High-end device
+## * Might usable for High-end device
 
 `--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA(EASU)PQ_CAS(RGB).glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl;"`
 
@@ -87,8 +87,7 @@ or `--glsl-shaders="~~~~~~~~~~~\shaders\NVSharpen.glsl"`
 
 *dxva2 is not safe. It appears to always use BT.601 for forced RGB conversion, but actual behavior depends on the GPU drivers. Some drivers appear to convert to limited range RGB, which gives a faded appearance. In addition to driver-specific behavior, global system settings might affect this additionally. This can give incorrect results even with completely ordinary video sources. see [mpvio manual](https://mpv.io/manual/master/#options-hwdec).*
 
-*All other methods, in particular the copy-back methods (like dxva2-copy etc.) should hopefully be safe, although they can still cause random decoding issues. At the very least, they shouldn't affect the colors of the image.
-Otherwise don't mind when you couldn't tell the different dxva2-copy and d3d11va-copy.*
+*All other methods, in particular the copy-back methods (like dxva2-copy etc.) should hopefully be safe, although they can still cause random decoding issues. At the very least, they shouldn't affect the colors of the image.**Otherwise don't mind when you couldn't tell the different dxva2-copy and d3d11va-copy.**
 
 *In general, it's very strongly advised to avoid hardware decoding unless absolutely necessary, i.e. if your CPU is insufficient to decode the file in questions. If you run into any weird decoding issues, frame glitches or discoloration, and you have `--hwdec=...` turned on, the first thing you should try is disabling it.*
 
@@ -153,7 +152,7 @@ Set display refresh rate only in your native Operating System. not recommended u
 
 Set mpv.conf `--video-sync=display-resample` + `--tscale=oversample`
 
-or `--tscale-blur=0.6991556596428412` + `--tscale=box` (**preferred*)
+or ***`--tscale-blur=0.6991556596428412` + `--tscale=box` (_preferred when use `--vo=gpu`_)***
 
 or `--tscale-clamp=0.0` + `--tscale-radius=1.1` #(lower e.g. 0.955 = sharper; higher 1.005 = smooth; 1.0 = smooth; 1.01 =
  smoother; 1.1 might smoother + `--tscale-window=sphinx` #(or "quadric") +`--tscale=box`
@@ -172,7 +171,7 @@ Explanation guide in [here](https://kokomins.wordpress.com/2019/10/26/svp-4-setu
 
 for 25 fps video set [`--video-sync-max-video-change=...`](https://mpv.io/manual/master/#options-video-sync-max-video-change)
 
-* Interlaced 
+### ***Interlaced***
  
  Calculation (N)/1.001
  
@@ -194,17 +193,17 @@ for 25 fps video set [`--video-sync-max-video-change=...`](https://mpv.io/manual
  
 [SÉCAM](https://en.wikipedia.org/wiki/SECAM)
 
-* On low end device 2C/4T CPU or 4C/4T you could use 1 or 2 shaders at same time.
+### ****On low end device 2C/4T CPU or 4C/4T you could use 1 or 2 shaders at same time.***
 
-* MPV only (Without SVP)
+### ****MPV only (Without SVP)***
 
 `vo=gpu`, [`gpu-api=...`]()`--interpolation=yes`. Set Display Frequency on your monitor to 59.999/60/72 Hertz etc. You should try by yourself 
 
 for [`vo=gpu-next`](gpu-renderer-options) see [#9427](https://github.com/mpv-player/mpv/issues/9427),[`--interpolation-preserve`](https://mpv.io/manual/master/#options-interpolation-preserve), [`--image-lut=...`](https://mpv.io/manual/master/#options-image-lut),[`--image-lut-type=...`](https://mpv.io/manual/master/#options-image-lut-type), [`--target-colorspace-hint`](https://mpv.io/manual/master/#options-target-colorspace-hint), [`--tone-mapping=... #spline/bt.2446a`](https://mpv.io/manual/master/#options-tone-mapping), [`--inverse-tone-mapping`](https://mpv.io/manual/master/#options-inverse-tone-mapping), [`--tone-mapping-crosstalk=...`](https://mpv.io/manual/master/#options-tone-mapping-crosstalk), [`--tone-mapping-mode=..`](https://mpv.io/manual/master/#options-gamut-mapping-mode), [`--allow-delayed-peak-detect`](https://mpv.io/manual/master/#options-allow-delayed-peak-detect), [`--lut=...`](https://mpv.io/manual/master/#options-lut), [`--lut-type=`](https://mpv.io/manual/master/#options-lut-type)
 
-* MPV with SVP
+### ****MPV with SVP***
 
-`--input-ipc-server=mpvpipe` `--video-sync=display-resample` `--interpolation=yes` or `--interpolation=no` or don't write this in mpv.conf let mpv do their own. 
+`--input-ipc-server=mpvpipe` `--video-sync=display-resample` `--interpolation=yes` or `--interpolation=no` or don't write this ~~(--interpolation)~~ in mpv.conf let mpv do their own. 
 
 1. If your sytem not enough interpolating fps depending on frequency display such as 60Hz or more, you could lowering Display Frequency to 48Hz
 2. If your video source higher resolution than your screen, set Reduce Image scaling on "Frame Size" menu. In Alter video frame size block menu Set alter video framesize "Decrease to screen" 
@@ -215,13 +214,13 @@ for [`vo=gpu-next`](gpu-renderer-options) see [#9427](https://github.com/mpv-pla
 7. For me no reason using more than doubling frame rate interpolation.
 8. On Linux sytem you already know which one is similiar parameter using .vpy script.
 
-* Advantage set display frequency to 48 Hertz and lowering display resolution 
+### ****Advantage set display frequency to 48 Hertz and lowering display resolution***
 1. you can extend battery life and reduce power consuption on mobile device 
 2. reduce unnecessary resource in Dekstop PC. If your system is High-End device you could do complicated settings and heavy scripts which is still difficult to achieve when using higher resolution and refresh rate more than 48 Hertz.
 
-* On low end device 2C/4T CPU or 4C/4T with SVP the maximum display resolution scale without eating too much resource maybe between WXGA (1280 x 720) up to FHD (1920 x 1080p).
+### ****On low end device 2C/4T CPU or 4C/4T with SVP the maximum display resolution scale without eating too much resource maybe between WXGA (1280 x 720) up to FHD (1920 x 1080p).***
 
-* If your see a significant framedrop with high display resolution try lowering that, make sure still on the same range aspect ratio (e.g 16:9 / 16:10) then set "decrease to screen size" on SVP
+### ****If your see a significant framedrop with high display resolution try lowering that, make sure still on the same range aspect ratio (e.g 16:9 / 16:10) then set "decrease to screen size" on SVP***
 
 Singularity;
 | Width | Height | AR | Known as |  | Width | Height | AR | Known as |
@@ -246,7 +245,7 @@ Singularity;
 * [Wikipedia common resolution](https://en.wikipedia.org/wiki/List_of_common_resolutions)
 * [list of 16:9 resolutions](https://levvvel.com/169-resolutions/)
 
-The best case scenario is running SVP On:
+### ***The best case scenario is running SVP On:***
 
 1. PC Dekstop CPU with i-GPU (integrated GPU) such as Intel-HD/Iris-Xe/Radeon Vega + Discrete/Dedicated Graphic.
 2. Mobile laptop with Hybrid Graphic/Dedicated Graphic
@@ -262,7 +261,7 @@ Process can run separately so it doesn't overload devices on one side. SVP can u
 | Manufactured | Product | Fab Process | Core | Thread | TDP | PL1 | PL2 | Base | Boost | L1 | L2 | L3 | L4 | Integrated Graphic | PCI-E | Memory | Unlocked | Dedicated GPU |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | AMD | A8-3500M | 32nm (Global Foundries) | 4 | 4 | 35W | N/A | N/A | 1.50GHz | 2.40GHz | 256KB + 256KB | 4MB | N/A | N/A | Radeon HD 6620G | 2.0 | DDR3L | Yes | N/A |
-| Intel | i3-6006U | 14 nm Intel | 2 | 4 | 15W | 15W | 25W | 2.00GHz | N/A | 64KB + 64KB | 512KB | 3MB | N/A | HD Graphics 520 | 3.0 | DDR4 | No | AMD Radeon R5 M430(Hybrid)
+| Intel | i3-6006U | 14nm Intel | 2 | 4 | 15W | 15W | 25W | 2.00GHz | N/A | 64KB + 64KB | 512KB | 3MB | N/A | HD Graphics 520 | 3.0 | DDR4 | No | AMD Radeon R5 M430(Hybrid)
  |
 * On Linux it's hit and miss using propietary or open source driver. I won't make a general recommendation on which to use, but here are some cases, in which certain drivers are better than others.
 * On windows 10 on both CPU using DXVA2, D3D11 or Vulkan, run flawesly. Windows 8.1 I didn't test it yet 
@@ -273,7 +272,7 @@ Process can run separately so it doesn't overload devices on one side. SVP can u
 
 To maintaining acceptable hearing experience i suggested using Floating-Point processing instead of Integers. Float (32/32 bits) @ 192000hz [32bit Float Explained](https://www.sounddevices.com/32-bit-float-files-explained/), [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754)
 
-*Don't confuse Sample rate/Sampling rate in audio recording/mastering/converting files vs Oversampling on digital to analog signaling*, that's different. Oversampling is a technique upsampling based on the original source (sample rate) to reconstruct signal to reduce audio artifacts distortion and reduce aliasing in Nyquist frequency. Higher levels of oversampling results in less aliasing occurring in the audible range. 
+***Don't confuse Sample rate/Sampling rate in audio recording/mastering/converting files vs Oversampling on digital to analog signaling***, that's different. Oversampling is a technique upsampling based on the original source (sample rate) to reconstruct signal to reduce audio artifacts distortion and reduce aliasing in Nyquist frequency. Higher levels of oversampling results in less aliasing occurring in the audible range. 
 
 Sounds like i talking bias right because you couldn't tell the different 44100Hz/48000Hz vs 176400Hz/192000Hz? Human hearings limited to 20000Hz? That's not completely true. It's about in-machine processing not the limitation of human audible frequency range, we can't hear or playing digital audio format like you eating a banana because we don't live in virtual world. If we live in cyberspace and limitations as human in general still exist it's possible high frequency can hurt our ears. But we live in different world that's why we need machine as translator that might be complicated. 
 
@@ -297,11 +296,26 @@ Select a sample rate to 176400.0 Hz or 192000.0 Hz
 </pre>
 
 Commonly used sample rate:
-| 44100Hz*(n) | 48000Hz*(n) |
-| --- | --- |
-| 88200Hz | 96000Hz |
-| 132300Hz | 144000Hz |
-| 176400Hz | 192000Hz |
+| 44100Hz*(n) | 48000Hz*(n) |  | Uncommon | sample rate |
+| --- | --- | --- | --- | --- |
+| 88200Hz | 96000Hz |  | 220500Hz | 240000Hz |
+| 132300Hz | 144000Hz |  | 26400Hz | 280600Hz |
+| 176400Hz | 192000Hz |  | 308700Hz | 336000Hz |
+|  |  |  | 352800Hz | 384000Hz |
+|  |  |  | 396900Hz | 432000Hz |
+|  |  |  | 308700Hz | 336000Hz |
+|  |  |  | 441000Hz | 480000Hz |
+|  |  |  | 485100Hz | 528000Hz |
+|  |  |  | 529200Hz | 576000Hz |
+|  |  |  | 573300Hz | 624000Hz |
+|  |  |  | 617400Hz | 672000Hz |
+|  |  |  | 661500Hz | 720000Hz |
+|  |  |  | 705600Hz | 768000Hz |
+|  |  |  | 749700Hz | 816000Hz |
+|  |  |  | 793800Hz | 864000Hz |
+|  |  |  | 837900Hz | 912000Hz |
+|  |  |  | 882000Hz | 960000Hz |
+
 
 If your audio hardware in your system doesn't support high sample rate audio produce crackling noise (e.g. poor/old built in internal DAC/Speaker), you could use a capable third-party digital audio interface (Headset/DAC/Speaker).
 
