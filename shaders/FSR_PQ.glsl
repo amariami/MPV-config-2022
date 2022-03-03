@@ -34,7 +34,7 @@
 //!BIND HOOKED
 //!SAVE EASUTEX
 //!DESC FidelityFX Super Resolution v1.0.2 (EASU)
-//!WHEN OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 1.0 >
+//!WHEN OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 0.5 >
 //!WIDTH OUTPUT.w OUTPUT.w LUMA.w 2 * < * LUMA.w 2 * OUTPUT.w LUMA.w 2 * > * + OUTPUT.w OUTPUT.w LUMA.w 2 * = * +
 //!HEIGHT OUTPUT.h OUTPUT.h LUMA.h 2 * < * LUMA.h 2 * OUTPUT.h LUMA.h 2 * > * + OUTPUT.h OUTPUT.h LUMA.h 2 * = * +
 //!COMPONENTS 1
@@ -300,7 +300,7 @@ vec4 hook() {
 //!COMPONENTS 1
 
 // User variables - RCAS
-#define SHARPNESS 0.2 // Controls the amount of sharpening. The scale is {0.0 := maximum, to N>0, where N is the number of stops (halving) of the reduction of sharpness}. 0.0 to 2.0.
+#define SHARPNESS 0.25 // Controls the amount of sharpening. The scale is {0.0 := maximum, to N>0, where N is the number of stops (halving) of the reduction of sharpness}. 0.0 to 2.0.
 #define FSR_RCAS_DENOISE 1 // If set to 1, applies denoising in addition to sharpening. Can be disabled for better performance. 0 or 1.
 #define FSR_PQ 0 // Whether the source content has PQ gamma or not. Needs to be set to the same value for both passes. 0 or 1.
 
