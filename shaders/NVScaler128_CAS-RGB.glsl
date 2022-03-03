@@ -65,7 +65,7 @@
 //!BIND coef_usm
 //!DESC NVIDIA Image Scaling and Sharpening v1.0.2
 //!COMPUTE 32 24 128 1
-//!WHEN OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 1.0 >
+//!WHEN OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 0.5 >
 //!WIDTH OUTPUT.w
 //!HEIGHT OUTPUT.h
 
