@@ -295,13 +295,13 @@ Default format set to 24bit, 192000Hz (Studio Quality) </pre>
 Select a sample rate to 176400.0 Hz or 192000.0 Hz
 </pre>
 
-Commonly used sample rate:
-| 44100Hz*(n) | 48000Hz*(n) |  | Uncommon | sample rate |
+Commonly used sample rate, Sampling rate*(n)
+| Common | sample rate |  | Uncommon | sample rate |
 | --- | --- | --- | --- | --- |
-| 88200Hz | 96000Hz |  | 220500Hz | 240000Hz |
-| 132300Hz | 144000Hz |  | 26400Hz | 280600Hz |
-| 176400Hz | 192000Hz |  | 308700Hz | 336000Hz |
-|  |  |  | 352800Hz | 384000Hz |
+| 44100Hz | 48000Hz |  | 220500Hz | 240000Hz |
+| 88200Hz | 96000Hz |  | 26400Hz | 280600Hz |
+| 132300Hz | 144000Hz |  | 308700Hz | 336000Hz |
+| 176400Hz | 192000Hz |  | 352800Hz | 384000Hz |
 |  |  |  | 396900Hz | 432000Hz |
 |  |  |  | 308700Hz | 336000Hz |
 |  |  |  | 441000Hz | 480000Hz |
