@@ -238,15 +238,13 @@ Singularity;
 | 768 | 430 | 16:9 |  |  |  |  |  |  |
 | 640 | 360 | 16:9 |  |  | 5120 | 3072 | 16:10 |  |
 | 512 | 288 | 16:9 |  |  | 2560 | 1536 | 16:10 |  |
-| 480 | 270 | 16:9 |  |  | 1280 | 768 | 16:0 | WXGA |
+| 480 | 270 | 16:9 |  |  | 1280 | 768 | 16:10 | WXGA |
 |  |  |  |  |  | 640 | 384 | 16:10 |  |
 
 * [Graphics display resolution](https://en.wikipedia.org/wiki/Graphics_display_resolution)
 * [Resultion scale calculator](https://bneijt.nl/pr/resolution-scale-calculator/)
 * [Wikipedia common resolution](https://en.wikipedia.org/wiki/List_of_common_resolutions)
 * [list of 16:9 resolutions](https://levvvel.com/169-resolutions/)
-
-#.
 
 The best case scenario is running SVP On:
 
@@ -256,7 +254,7 @@ The best case scenario is running SVP On:
 Process can run separately so it doesn't overload devices on one side. SVP can use rendering device to i-GPU then do their own, MPV can do decoding to Discrete or Hybrid Graphics. It give headroom for CPU Core to breathe freely. You can see on monitoring system on Linux terminal or MAC activity monitor or Windows task manager/HWiNFO. 
 
 [`AMD Hybrid Graphics`](https://en.wikipedia.org/wiki/AMD_Hybrid_Graphics)
-[`Nvidia Optinus`](https://en.wikipedia.org/wiki/Nvidia_Optimus)
+[`Nvidia Optimus prime`](https://en.wikipedia.org/wiki/Nvidia_Optimus)
 [#7336](https://github.com/mpv-player/mpv/issues/7336), []()
 
 # Intermezzo: the lowest device i've ever tried.
