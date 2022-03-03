@@ -42,7 +42,7 @@
 //!HOOK LUMA
 //!BIND HOOKED
 //!DESC FidelityFX Sharpening v1.0.2 (Relinearization)
-//!WHEN OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 1.0 < !
+//!WHEN OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 0.1 < !
 
 // User variables - Relinearization
 // Compatibility
