@@ -40,7 +40,7 @@
 //!HOOK LUMA
 //!BIND HOOKED
 //!DESC FidelityFX Upsampling and Sharpening v1.0.2 (Relinearization)
-//!WHEN OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 1.0 >
+//!WHEN OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 0.5 >
 
 // User variables - Relinearization
 // Compatibility
