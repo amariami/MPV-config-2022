@@ -32,7 +32,7 @@
 //!BIND HOOKED
 //!SAVE EASUTEX
 //!DESC FidelityFX Super Resolution v1.0 (EASU)
-//!WHEN OUTPUT.w OUTPUT.h * MAIN.w MAIN.h * / 1.0 >
+//!WHEN OUTPUT.w OUTPUT.h * MAIN.w MAIN.h * / 0.5 >
 //!WIDTH OUTPUT.w
 //!HEIGHT OUTPUT.h
 
