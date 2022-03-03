@@ -30,7 +30,7 @@
 //!BIND HOOKED
 //!DESC NVIDIA Image Sharpening v1.0.2
 //!COMPUTE 32 32 128 1
-//!WHEN OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 1.0 > ! OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 1.0 < ! *
+//!WHEN OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 1.0 >
 
 // User variables
 #define SHARPNESS 0.25 // Amount of sharpening. 0.0 to 1.0.
