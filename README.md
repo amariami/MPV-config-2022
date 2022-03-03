@@ -259,10 +259,10 @@ Process can run separately so it doesn't overload devices on one side. SVP can u
 
 # Intermezzo: the lowest device i've ever tried.
 
-| Manufactured | Product | Core | Thread | TDP | PL1 | PL2 | Base | Boost | L1 | L2 | L3 | L4 | Integrated Graphic | PCI-E | Memory | Unlocked | Dedicated GPU |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| AMD | A8-3500M | 4 | 4 | 35W | N/A | N/A | 1.50GHz | 2.40GHz | 256KB + 256KB | 4MB | N/A | N/A | Radeon HD 6620G | 2.0 | DDR3L | Yes | N/A |
-| Intel | i3-6006U | 2 | 4 | 15W | 15W | 25W | 2.00GHz | N/A | 64KB + 64KB | 512KB | 3MB | N/A | HD Graphics 520 | 3.0 | DDR4 | No | AMD Radeon R5 M430(Hybrid)
+| Manufactured | Product | Fab Process | Core | Thread | TDP | PL1 | PL2 | Base | Boost | L1 | L2 | L3 | L4 | Integrated Graphic | PCI-E | Memory | Unlocked | Dedicated GPU |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| AMD | A8-3500M | 32nm (Global Foundries) | 4 | 4 | 35W | N/A | N/A | 1.50GHz | 2.40GHz | 256KB + 256KB | 4MB | N/A | N/A | Radeon HD 6620G | 2.0 | DDR3L | Yes | N/A |
+| Intel | i3-6006U | 14 nm Intel | 2 | 4 | 15W | 15W | 25W | 2.00GHz | N/A | 64KB + 64KB | 512KB | 3MB | N/A | HD Graphics 520 | 3.0 | DDR4 | No | AMD Radeon R5 M430(Hybrid)
  |
 * On Linux it's hit and miss using propietary or open source driver. I won't make a general recommendation on which to use, but here are some cases, in which certain drivers are better than others.
 * On windows 10 on both CPU using DXVA2, D3D11 or Vulkan, run flawesly. Windows 8.1 I didn't test it yet 
