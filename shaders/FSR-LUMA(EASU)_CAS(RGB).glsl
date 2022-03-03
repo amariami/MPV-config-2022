@@ -269,7 +269,7 @@ vec4 hook() {
 //!HOOK MAIN
 //!BIND HOOKED
 //!DESC FidelityFX CAS Upsampling and Sharpening v1.0 (Relinearization)
-//!WHEN OUTPUT.w OUTPUT.h * MAIN.w MAIN.h * / 1.0 >*
+//!WHEN OUTPUT.w OUTPUT.h * MAIN.w MAIN.h * / 0.5 >*
 
 // User variables - Relinearization
 // Compatibility
@@ -336,7 +336,7 @@ vec4 hook() {
 //!HOOK MAIN
 //!BIND HOOKED
 //!DESC FidelityFX CAS Upsampling and Sharpening v1.0
-//!WHEN OUTPUT.w OUTPUT.h * MAIN.w MAIN.h * / 1.0 >
+//!WHEN OUTPUT.w OUTPUT.h * MAIN.w MAIN.h * / 0.5 >
 //!WIDTH OUTPUT.w
 //!HEIGHT OUTPUT.h
 
