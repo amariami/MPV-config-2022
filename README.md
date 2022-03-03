@@ -246,7 +246,10 @@ Singularity;
 * [Wikipedia common resolution](https://en.wikipedia.org/wiki/List_of_common_resolutions)
 * [list of 16:9 resolutions](https://levvvel.com/169-resolutions/)
 
-* The best case scenario is running SVP On 
+#.
+
+The best case scenario is running SVP On:
+
 1. PC Dekstop CPU with i-GPU (integrated GPU) such as Intel-HD/Iris-Xe/Radeon Vega + Discrete/Dedicated Graphic.
 2. Mobile laptop with Hybrid Graphic/Dedicated Graphic
 
