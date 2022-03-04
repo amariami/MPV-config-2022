@@ -169,7 +169,8 @@ Guide [eXmendiC wordpress](https://iamscum.wordpress.com/guides/videoplayback-gu
 
 # Interpolation/Smooth motion
 
-Need [`--video-sync=display-...`](https://mpv.io/manual/master/#options-video-sync) to enable MPV built in [interpolation](https://mpv.io/manual/master/#options-interpolation) e.g `--video-sync=display-resample`
+Need [`--video-sync=display-...`](https://mpv.io/manual/master/#options-video-sync) to enable MPV built in [interpolation](https://mpv.io/manual/master/#options-interpolation) e.g `--video-sync=display-resample` or `--video-sync=display-vdrop`
+```
 ```
 Calculation 
 24 fps  = 24*(N)
@@ -178,11 +179,11 @@ Calculation
 25 fps = 25*(N)
 30 fps = 30*(N)
 60 fps = 60*(N)
-
+```
 Explanation guide in [here](https://kokomins.wordpress.com/2019/10/26/svp-4-setup-guide-for-smooth-60-fps-anime-playback/#monitor-refresh-rate-extended)
 
 for 25 fps video set [`--video-sync-max-video-change=...`](https://mpv.io/manual/master/#options-video-sync-max-video-change)
-```
+
 ### ***Interlaced***
  
  Calculation (N)/1.001
