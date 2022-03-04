@@ -30,6 +30,8 @@ or `--glsl-shaders="~~\shaders\AMD-CAS-luma_trc-BT.1886.glsl"`
 
 or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-BT.1886.glsl"`
 
+or `--glsl-shaders="~~\shaders\ravu-lite-r2.glsl;~~\shaders\ravu-r2-yuv.glsl"`
+
 [see comment](https://gist.github.com/agyild/82219c545228d70c5604f865ce0b0ce5?permalink_comment_id=4072085#gistcomment-4072085) it doesn't hurt performance impact on mobile laptop
 
 or `--glsl-shaders="~~\shaders\NVIDIA-Scaler128_no-HDR"`
@@ -48,7 +50,7 @@ or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_
 
 or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_no-HDR.glsl;~~\shaders\AMD-CAS-scaled_rgb_trc_BT.1886` 
 
-[`NVScaler128_CAS-RGB.glsl`](https://github.com/amariami/MPV-config-2022/blob/main/shaders/NVScaler128_CAS-RGB.glsl) for performance (*Combined NIS(Nvidia Image Scaling) + FidelityFX CAS(Contrast Adaptive Sharpening) RGB version* it could get better result cause when using NVScaler only, some few parts are supposed blur that become too sharp might unacceptable, while CAS get better texture especially on blur part but not getting a strong line sharpening.
+ > for performance *(Combined NIS(Nvidia Image Scaling) + AMD FidelityFX CAS(Contrast Adaptive Sharpening) RGB version* it could get better result cause when using Nvidia scaler only, some few parts are supposed blur that become too sharp might unacceptable, while CAS get better texture especially on blur part but not getting a strong line sharpening.
 
 or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl"`
 
@@ -56,7 +58,7 @@ or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_no-HDR.glsl"`
 
 ## * Might usable for High-end device
 
-`--glsl-shaders="~~\shaders\~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-BT.1886.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl;"`
+`--glsl-shaders="~~\shaders\~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-BT.1886.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
 or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\AMD-CAS-rgb_trc-BT.1886`
 
@@ -78,7 +80,9 @@ or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_HDR.glsl"`
 
 `--error-diffusion=sierra-lite #(simple|false-fs|sierra-lite|floyd-steinberg|atkinson|jarvis-judice-ninke|stucki|burkes|sierra-3|sierra-2)`
 
-`~~~~~~~~~~~\` it means set manually folder/location directory
+`~~\` it means set manually folder/location directory
+
+ > if you don't like writing combination, often to use same shaders into another platform you can combine many shaders into one file .glsl so less writing in mpv.conf. Make sure that shader doesn't conflict with other shaders
 
 # Quality reduction with hardware decoding
 *some device use DXVA-copy for rendering, enable `--hwdec=d3d11va-copy` to trigger D3d11va-copy.*
@@ -106,7 +110,7 @@ Calculation 8*(N). *64x64x64 72x72x72 80x80x80 88x88x88 96x96x96 104x104x104 112
 
 [`--scaler-lut-size=10`](https://mpv.io/manual/master/#options-scaler-lut-size)
 
-[`--icc-cache-dir=~~~~~~~~~~~\`](https://mpv.io/manual/master/#options-icc-cache-dir)
+[`--icc-cache-dir=~~\3dLutcache`](https://mpv.io/manual/master/#options-icc-cache-dir) #create a new folder to store cache
 
 [`--icc-profile=...`](https://mpv.io/manual/stable/#options-icc-profile)(*Optional*) #I suggested don't use that if your display support ICC by default, it can ruin motion on video playback caused glitch. Except your system doesn't support color management. On Mac or Windows you shouldn't need that, use auto
 
@@ -169,7 +173,7 @@ Need [`--video-sync=display-...`](https://mpv.io/manual/master/#options-video-sy
 ```
 Calculation 
 24 fps  = 24*(N)
-        = 48Hz, 72Hz, 96Hz, 120Hz, 144Hz, ~~168Hz~~, ~~192Hz~~, ~~216Hz~~ , 240hz
+        = 48Hz, 72Hz, 96Hz, 120Hz, 144Hz, ~~168Hz~~, ~~192Hz~~, ~~216Hz~~, 240hz
         
 25 fps = 25*(N)
 30 fps = 30*(N)
