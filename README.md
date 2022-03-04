@@ -18,57 +18,59 @@ Another shaders can be download via [User SCRIPT](https://github.com/mpv-player/
 
 some FSR/CAS/NVidia Image Scaling has been changed the parameter to trigger upscaling without limit by specific resolution in [here](https://github.com/amariami/MPV-config-2022/tree/main/shaders)
 
-it can improving startup speed performance but the unused cache files may stick around, you should delete/remove it manually if cache is too much `--gpu-shader-cache-dir=~~~~~~~~~~~\shaders"`
+it can improving startup speed performance but the unused cache files may stick around, you should delete/remove it manually if cache is too much `--gpu-shader-cache-dir=~~\shaders"`
 
 ## * Might usable for low-end/entry level device such as Intel-HD, Vega3 or old Radeon HD APU mobile laptop (*not too old*)
 
-`--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA.glsl"`
+`--glsl-shaders="~~\shaders\AMD-FSR-PQ 1-Denoise.glsl"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\CAS-scaled-LUMA.glsl"`
+or `--glsl-shaders="~~\shaders\AMD-CAS-scaled_luma_trc-Gamma-2.2.glsl"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\CAS-LUMA.glsl"`
+or `--glsl-shaders="~~\shaders\AMD-CAS-luma_trc-BT.1886.glsl"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA(EASU)PQ_CAS(RGB).glsl"`(*Modified from EASU and CAS RGB*)
+or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-BT.1886.glsl"`
 
 [see comment](https://gist.github.com/agyild/82219c545228d70c5604f865ce0b0ce5?permalink_comment_id=4072085#gistcomment-4072085) it doesn't hurt performance impact on mobile laptop
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler.glsl"`
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler128_no-HDR"`
+
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler128_no-HDR;~~\shaders\AMD-CAS-rgb_trc-BT.1886"`
 
 ## * Might usable for Mid-end device
 
-`--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl"`
+`--glsl-shaders="~~\shaders\AMD-FSR-PQ 1-Denoise.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\FSRCNNX_x2_8-0-4-1.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl"`
+or `--glsl-shaders="~~\shaders\FSRCNNX_x2_8-0-4-1.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\FSRCNNX_x2_16-0-4-1.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl"`
+or `--glsl-shaders="~~\shaders\FSRCNNX_x2_16-0-4-1.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA(EASU)PQ_CAS(RGB).glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl"`
+or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-BT.1886.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler256_CAS-RGB.glsl` 
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_no-HDR.glsl;~~\shaders\AMD-CAS-scaled_rgb_trc_BT.1886` 
 
 [`NVScaler128_CAS-RGB.glsl`](https://github.com/amariami/MPV-config-2022/blob/main/shaders/NVScaler128_CAS-RGB.glsl) for performance (*Combined NIS(Nvidia Image Scaling) + FidelityFX CAS(Contrast Adaptive Sharpening) RGB version* it could get better result cause when using NVScaler only, some few parts are supposed blur that become too sharp might unacceptable, while CAS get better texture especially on blur part but not getting a strong line sharpening.
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler.glsl"`
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\NVSharpen.glsl"`
+or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_no-HDR.glsl"`
 
 ## * Might usable for High-end device
 
-`--glsl-shaders="~~~~~~~~~~~\shaders\FSR-LUMA(EASU)PQ_CAS(RGB).glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl;"`
+`--glsl-shaders="~~\shaders\~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-BT.1886.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl;"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler256_CAS-RGB.glsl;;~~~~~~~~~~~\shaders\KrigBilateral.glsl;`
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\AMD-CAS-rgb_trc-BT.1886`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\FSRCNNX_x2_16-0-4-1.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl;~~~~~~~~~~~\shaders\CAS-RGB.glsl"`
+or `--glsl-shaders="~~\shaders\FSRCNNX_x2_16-0-4-1.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl;~~\shaders\~~\shaders\AMD-CAS-rgb_trc-BT.1886"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\FSRCNNX_x2_56-16-4-1.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl"`
+or `--glsl-shaders="~~\shaders\FSRCNNX_x2_56-16-4-1.glsl;~~\shaders\KrigBilateral.glsl"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\FSRCNN_x2_r1_32-0-2.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl"`
+or `--glsl-shaders="~~\shaders\FSRCNN_x2_r1_32-0-2.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\FSRCNN_x2_r2_32-0-2.glsl;~~~~~~~~~~~\shaders\KrigBilateral.glsl;~~~~~~~~~~~\shaders\SSimDownscaler.glsl;~~~~~~~~~~~\shaders\CAS-RGB.glsl"`
+or `--glsl-shaders="~~\shaders\FSRCNN_x2_r2_32-0-2.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl;~~\shaders\~~\shaders\AMD-CAS-rgb_trc-BT.1886"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\NVScaler.glsl"`
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl"`
 
-or `--glsl-shaders="~~~~~~~~~~~\shaders\NVSharpen.glsl"`
+or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_HDR.glsl"`
 
 `--dither-depth=auto` 
 
@@ -164,25 +166,39 @@ Guide [eXmendiC wordpress](https://iamscum.wordpress.com/guides/videoplayback-gu
 # Interpolation/Smooth motion
 
 Need [`--video-sync=display-...`](https://mpv.io/manual/master/#options-video-sync) to enable MPV built in [interpolation](https://mpv.io/manual/master/#options-interpolation) e.g `--video-sync=display-resample`
-
-Calculation for 24 fps = 24*(N), 25 fps = 25*(N), 30 fps = 30*(N). 
+```
+Calculation 
+24 fps  = 24*(N)
+        = 48Hz, 72Hz, 96Hz, 120Hz, 144Hz, ~~168Hz~~, ~~192Hz~~, ~~216Hz~~ , 240hz
+        
+25 fps = 25*(N)
+30 fps = 30*(N)
+60 fps = 60*(N)
 
 Explanation guide in [here](https://kokomins.wordpress.com/2019/10/26/svp-4-setup-guide-for-smooth-60-fps-anime-playback/#monitor-refresh-rate-extended)
 
 for 25 fps video set [`--video-sync-max-video-change=...`](https://mpv.io/manual/master/#options-video-sync-max-video-change)
-
+```
 ### ***Interlaced***
  
  Calculation (N)/1.001
- 
-24 fps /1.001 = 23.976023976023976023976023976024
+```
+24 fps /1.001 = 23.976023976023976023976023976024 x 2
+              = 47.952047952047952047952047952048 Hz
+              x3 = 71.928071928071928071928071928072 Hz
+              
+25 fps /1.001 = 24.975024975024975024975024975025 x 2
+              = 49.95004995004995004995004995005 Hz
 
-25 fps /1.001 = 24.975024975024975024975024975025
+30 fps /1.001 = 29.97002997002997002997002997003 x 2
+              = 59.94005994005994005994005994006 Hz
 
-30 fps /1.001 = 29.97002997002997002997002997003
+60 fps /1.001 = 59.94005994005994005994005994006 x 1
+              = 59.94005994005994005994005994006 Hz
 
-60 fps /1.001 = 59.94005994005994005994005994006
-
+60 fps /1.001 = 59.94005994005994005994005994006 x 2
+              = 119.88011988011988011988011988012 Hz
+```
  Wait... what the heck? what different 24 fps vs 23.976 fps?
  
 [The dumb U.S. broadcasting NTSC (National Television System Committee) History](https://en.wikipedia.org/wiki/NTSC#History)
@@ -199,11 +215,11 @@ for 25 fps video set [`--video-sync-max-video-change=...`](https://mpv.io/manual
 
 `vo=gpu`, [`gpu-api=...`]()`--interpolation=yes`. Set Display Frequency on your monitor to 59.999/60/72 Hertz etc. You should try by yourself 
 
-for [`vo=gpu-next`](gpu-renderer-options) see [#9427](https://github.com/mpv-player/mpv/issues/9427),[`--interpolation-preserve`](https://mpv.io/manual/master/#options-interpolation-preserve), [`--image-lut=...`](https://mpv.io/manual/master/#options-image-lut),[`--image-lut-type=...`](https://mpv.io/manual/master/#options-image-lut-type), [`--target-colorspace-hint`](https://mpv.io/manual/master/#options-target-colorspace-hint), [`--tone-mapping=... #spline/bt.2446a`](https://mpv.io/manual/master/#options-tone-mapping), [`--inverse-tone-mapping`](https://mpv.io/manual/master/#options-inverse-tone-mapping), [`--tone-mapping-crosstalk=...`](https://mpv.io/manual/master/#options-tone-mapping-crosstalk), [`--tone-mapping-mode=..`](https://mpv.io/manual/master/#options-gamut-mapping-mode), [`--allow-delayed-peak-detect`](https://mpv.io/manual/master/#options-allow-delayed-peak-detect), [`--lut=...`](https://mpv.io/manual/master/#options-lut), [`--lut-type=`](https://mpv.io/manual/master/#options-lut-type)
+for [`vo=gpu-next`](gpu-renderer-options) see [#9427](https://github.com/mpv-player/mpv/issues/9427),[`--interpolation-preserve`](https://mpv.io/manual/master/#options-interpolation-preserve), [`--image-lut=...`](https://mpv.io/manual/master/#options-image-lut),[`--image-lut-type=...`](https://mpv.io/manual/master/#options-image-lut-type), [`--target-colorspace-hint`](https://mpv.io/manual/master/#options-target-colorspace-hint), [`--tone-mapping=... #spline/bt.2446a`](https://mpv.io/manual/master/#options-tone-mapping), [`--inverse-tone-mapping`](https://mpv.io/manual/master/#options-inverse-tone-mapping), [`--tone-mapping-crosstalk=...`](https://mpv.io/manual/master/#options-tone-mapping-crosstalk), [`--tone-mapping-mode=...`](https://mpv.io/manual/master/#options-gamut-mapping-mode), [`--allow-delayed-peak-detect`](https://mpv.io/manual/master/#options-allow-delayed-peak-detect), [`--lut=...`](https://mpv.io/manual/master/#options-lut), [`--lut-type=...`](https://mpv.io/manual/master/#options-lut-type)
 
 ### ****MPV with SVP***
 
-`--input-ipc-server=mpvpipe` `--video-sync=display-resample` `--interpolation=yes` or `--interpolation=no` or don't write this ~~(--interpolation)~~ in mpv.conf let mpv do their own. 
+`--input-ipc-server=mpvpipe` `--video-sync=display-resample` `--interpolation=yes` or `--interpolation=no` or don't write this ~~(--interpolation)~~ in mpv.conf let mpv do their own. `--input-ipc-server=/tmp/mpvsocket #linux`
 
 1. If your sytem not enough interpolating fps depending on frequency display such as 60Hz or more, you could lowering Display Frequency to 48Hz
 2. If your video source higher resolution than your screen, set Reduce Image scaling on "Frame Size" menu. In Alter video frame size block menu Set alter video framesize "Decrease to screen" 
@@ -263,10 +279,10 @@ Process can run separately so it doesn't overload devices on one side. SVP can u
 | AMD | A8-3500M | 32nm (Global Foundries) | 4 | 4 | 35W | N/A | N/A | 1.50GHz | 2.40GHz | 256KB + 256KB | 4MB | N/A | N/A | Radeon HD 6620G | 2.0 | DDR3L | Yes | N/A |
 | Intel | i3-6006U | 14nm Intel | 2 | 4 | 15W | 15W | 25W | 2.00GHz | N/A | 64KB + 64KB | 512KB | 3MB | N/A | HD Graphics 520 | 3.0 | DDR4 | No | AMD Radeon R5 M430(Hybrid)
  |
-* On Linux it's hit and miss using propietary or open source driver. I won't make a general recommendation on which to use, but here are some cases, in which certain drivers are better than others.
-* On windows 10 on both CPU using DXVA2, D3D11 or Vulkan, run flawesly. Windows 8.1 I didn't test it yet 
-* Mac, sorry I don't have an old Macbook
-* If your low end hardware is better it shouldn't be a problem
+- [x] Linux it's hit and miss using propietary or open source driver. I won't make a general recommendation on which to use, but here are some cases, in which certain drivers are better than others.
+- [x] Windows 10 on both CPU using DXVA2, D3D11, OpenGL, OpenCL or Vulkan, run flawesly. Windows 8.1 I didn't test it yet 
+- [ ] Mac, sorry I don't have an old Macbook
+- [x] If your low end hardware is better it shouldn't be a problem
 
 # set Audio Sample Rate (#optional)
 
@@ -328,11 +344,11 @@ CD Quality standard is 441000Hz that's more than enough? Why CD still using 4410
 Look at [this](http://src.infinitewave.ca/), an example 96Khz files compress to 44.1Khz, select converter to FFmpeg 4.2.2 (soxr) vs FFmpeg 4.2.2 (swr), test result select to sweep. you can look the artifact wave caused by compression in there. Of course compression/lossy reduce audio quality better using lossless right? absolutely not the goal is for less storage and still on acceptable audible range of human ear.
 
 Advantage using 48 kHz sample rate;
-* offers slightly more headroom for tweaking
-* when computer performs processing digital source into sound, generally there's a signal lost (wired/wireless connection) before reaches to the output (speaker). The goal is to reduce effect of signal degradation.
-* reduce aliasing to prevent filter aplied caused by clipping.
-* make it possible to capture inaudible sound into audible. Need prove? You could try recording a sound from electronic cleaning machine called "ultrasonic cleaner" with your gadget.
-* reduce audio distortion effect caused by compression in cloud sharing server down to 44100Hz (if server perfoms compression to reduce bandwith)
+   - offers slightly more headroom for tweaking
+   - when computer performs processing digital source into sound, generally there's a signal lost (wired/wireless connection) before reaches to the output (speaker). The goal is to reduce effect of signal degradation.
+   - reduce aliasing to prevent filter aplied caused by clipping.
+   - make it possible to capture inaudible sound into audible. Need prove? You could try recording a sound from electronic cleaning machine called "ultrasonic cleaner" with your gadget.
+   - reduce audio distortion effect caused by compression in cloud sharing server down to 44100Hz (if server perfoms compression to reduce bandwith)
 
 I listening music on streaming service like Amazon, Spotify and  Youtube Music. The Offline (When i'm not connecting to the internet) audio or video files are in stereo lossy format such as Opus (afaik google get better implementation in that) and AAC-LC (most streaming music use that), (i'am not a fan of MP3 anymore it's old, don't like exhale/HE-AAC it cause clipping), e.g. use software called "Spek - Acoustic Spectrum Analyzer" On AAC-LC using FFmpeg 441KHz cut Frequency up to 20KHz, while Opus are set to 48KHz cut frequency up to 24KHz, so there's some headroom using 48KHz sample rate as final product.
 
