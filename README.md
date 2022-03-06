@@ -2,7 +2,7 @@
 
 Read [mpv.io manual stable for stable version, master for experimental version](https://mpv.io/manual/), [MPV wiki](https://github.com/mpv-player/mpv/wiki), [Mpv FAQ](https://github.com/mpv-player/mpv/wiki/FAQ), 
 
-Just an archive. Generally use with SVP (Smooth Video Project) on Linux (*barebone free license*) and MAC/Windows (*Paid but you could try a trial version*), SVP uses the same [frame interpolation technique](https://en.wikipedia.org/wiki/Motion_interpolation) as available in high-end TVs and projectors (see “TrimensionDNM”, “Motion Plus”, “Motionflow” and others). Though it can be use without SVP.
+Just an archive. Generally use with [SVP (Smooth Video Project)](https://www.svp-team.com/wiki/FAQ) on Linux (*barebone free license*) and MAC/Windows (*Paid but you could try a trial version*), SVP uses the same [frame interpolation technique](https://en.wikipedia.org/wiki/Motion_interpolation) as available in high-end TVs and projectors (see “TrimensionDNM”, “Motion Plus”, “Motionflow” and others). Though it can be use without SVP.
 
 Might be usefull `--sigmoid-upscaling` `--correct-downscaling=yes` `--linear-downscaling=no`
 
@@ -170,12 +170,11 @@ Guide [eXmendiC wordpress](https://iamscum.wordpress.com/guides/videoplayback-gu
 # Interpolation/Smooth motion
 
 Need [`--video-sync=display-...`](https://mpv.io/manual/master/#options-video-sync) to enable MPV built in [interpolation](https://mpv.io/manual/master/#options-interpolation) e.g `--video-sync=display-resample` or `--video-sync=display-vdrop`
-```
-```
+
 Calculation 
 24 fps  = 24*(N)
         = 48Hz, 72Hz, 96Hz, 120Hz, 144Hz, ~~168Hz~~, ~~192Hz~~, ~~216Hz~~, 240hz
-        
+```     
 25 fps = 25*(N)
 30 fps = 30*(N)
 60 fps = 60*(N)
@@ -279,15 +278,23 @@ Process can run separately so it doesn't overload devices on one side. SVP can u
 
 # Intermezzo: the lowest device i've ever tried.
 
-| Manufactured | Product | Fab Process | Core | Thread | TDP | PL1 | PL2 | Base | Boost | L1 | L2 | L3 | L4 | Integrated Graphic | PCI-E | Memory | Unlocked | Dedicated GPU |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| AMD | A8-3500M | 32nm (Global Foundries) | 4 | 4 | 35W | N/A | N/A | 1.50GHz | 2.40GHz | 256KB + 256KB | 4MB | N/A | N/A | Radeon HD 6620G | 2.0 | DDR3L | Yes | N/A |
-| Intel | i3-6006U | 14nm Intel | 2 | 4 | 15W | 15W | 25W | 2.00GHz | N/A | 64KB + 64KB | 512KB | 3MB | N/A | HD Graphics 520 | 3.0 | DDR4 | No | AMD Radeon R5 M430(Hybrid)
- |
-- [x] Linux it's hit and miss using propietary or open source driver. I won't make a general recommendation on which to use, but here are some cases, in which certain drivers are better than others.
-- [x] Windows 10 on both CPU using DXVA2, D3D11, OpenGL, OpenCL or Vulkan, run flawesly. Windows 8.1 I didn't test it yet 
-- [ ] Mac, sorry I don't have an old Macbook
-- [x] If your low end hardware is better it shouldn't be a problem
+I don't know why keeping some old devices and didn't yet throw away. The funny thing they're still alive with a few defect. XD
+
+| Manufactured | Product | Fab Process | Core | Thread | TDP | PL1 | PL2 | Base | Boost | L1 | L2 | L3 | L4 | Integrated Graphic | PCI-E | Memory | Unlocked | Dedicated GPU | Decoding | SVP |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| AMD | E-350 | 40nm (TSMC) | 2 | 2 | 18W | N/A | N/A | 1.60GHz | N/A | 64KB + 64KB | 1MB | N/A | N/A | Radeon HD 6310 | 2.0 | DDR3 | N/A | N/A | Yes | Awful |
+| AMD | A4-3330MX | 32nm (Global Foundries) | 2 | 2 | 45W | N/A | N/A | 2.30GHz | 2.60GHz | 128KB + 128KB | 1MB | N/A | N/A | Radeon HD 6480G | 2.0 | DDR3L | Yes | N/A | Yes | Possibly SD-WXGA/HD |
+| AMD | A8-3500M | 32nm (Global Foundries) | 4 | 4 | 35W | N/A | N/A | 1.50GHz | 2.40GHz | 256KB + 256KB | 4MB | N/A | N/A | Radeon HD 6620G | 2.0 | DDR3L | Yes | N/A | Yes | Yes Possibly FHD |
+| Intel | Celeron N2806 | 22nm Intel | 2 | 2 | 4.5W | N/A | N/A | 1.60GHz | 2.00Ghz | 64KB + 48KB | 1MB | N/A | N/A | HD Graphics for Intel Atom Z3700 Series | 2.0 | DDR3L-RS | No | N/A | N/A | Awful |
+| Intel | Celeron N5095 | 10nm Intel | 4 | 4 | 15W | 15W | 25W | 2.00GHz | 2.90Ghz |128KB + 128KB | 1.5MB | 4MB | N/A | UHD Graphics | 3.0 | DDR4 | No | N/A | N/A | Possibly SD-WXGA/HD |
+| Intel | i3-6006U | 14nm Intel | 2 | 4 | 15W | 15W | 25W | 2.00GHz | N/A | 64KB + 64KB | 512KB | 3MB | N/A | HD Graphics 520 | 3.0 | DDR4 | No | AMD Radeon R5 M430(Hybrid) | Yes | Yes |
+- [x] Linux it's hit and miss using propietary or open source driver. I won't make a general recommendation on which to use, but in some specific case a certain driver are better than others.
+- [x] Windows 10 in some CPU using DXVA2, D3D11, OpenGL, OpenCL or Vulkan, run flawesly. Windows 7 or 8.1 I didn't test it yet.
+- [ ] Mac, sorry I don't have an old Macbook.
+- [x] Minimum possibilty at least 25W-35W TDP range on mobile device on 4 Core / 4 Threads with proper integrated-GPU or 2 Core / 4 Threads + dedicated/hybrid-GPU. You should take care about TDP before blindly buying a mobile laptop because some OEM vendor Limit/Locked the Boost TDP due to thermal issue. 
+- [x] Celeron N5095 4C/4T. Multithreaded performance almost match Core i3 performance but single core performance and i-GPU still couldn't compete Core i3 caused by their natural design. I see on [intel ark](https://ark.intel.com/content/www/us/en/ark/products/226264/intel-celeron-processor-7305-8m-cache-1-10-ghz.html) release the new Celeron 7305 5 Core / 6 Thread (1 Core with Hyperthread + 4 Core Celeron by nature)with TDP 15W but can Boost up to 55W, finally paired with i-GPU iris Xe Graphic, indeed intel Core i3 always better than Celeron.
+
+Otherwise if your [Entry level hardware is a Dekstop PC class level](https://www.svp-team.com/wiki/FAQ#What_are_system_requirements.3F) that shouldn't be a problem
 
 # set Audio Sample Rate (#optional)
 
@@ -355,7 +362,7 @@ Advantage using 48 kHz sample rate;
    - make it possible to capture inaudible sound into audible. Need prove? You could try recording a sound from electronic cleaning machine called "ultrasonic cleaner" with your gadget.
    - reduce audio distortion effect caused by compression in cloud sharing server down to 44100Hz (if server perfoms compression to reduce bandwith)
 
-I listening music on streaming service like Amazon, Spotify and  Youtube Music. The Offline (When i'm not connecting to the internet) audio or video files are in stereo lossy format such as Opus (afaik google get better implementation in that) and AAC-LC (most streaming music use that), (i'am not a fan of MP3 anymore it's old, don't like exhale/HE-AAC it cause clipping), e.g. use software called "Spek - Acoustic Spectrum Analyzer" On AAC-LC using FFmpeg 441KHz cut Frequency up to 20KHz, while Opus are set to 48KHz cut frequency up to 24KHz, so there's some headroom using 48KHz sample rate as final product.
+I listening music on streaming service like Amazon, Spotify and  Youtube Music. The Offline (When i'm not connecting to the internet) audio or video files are in stereo lossy format such as Opus (afaik google get better implementation in that) and AAC-LC (most streaming music use that), (i'am not a fan of MP3 anymore it's old, don't like exhale/HE-AAC it cause clipping), e.g. use software called "Spek - Acoustic Spectrum Analyzer" On AAC-LC using FFmpeg 44.1KHz cut Frequency up to 20KHz, while Opus 48KHz cut frequency up to 24KHz, so there's some headroom using 48KHz sample rate as final product.
 
 This is a modern day, we don't go back to the past, we learn from the past. I don't have old school audio equiptment anymore.
 48KHz is a standard for video. I hope you could agree with that.
