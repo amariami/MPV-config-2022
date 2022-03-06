@@ -298,7 +298,7 @@ Otherwise if your [Entry level hardware is a Dekstop PC class level](https://www
 
 # set Audio Sample Rate (#optional)
 
-To maintaining acceptable hearing experience i suggested using Floating-Point processing instead of Integers. Float (32/32 bits) @ 192000hz [32bit Float Explained](https://www.sounddevices.com/32-bit-float-files-explained/), [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754)
+To maintaining acceptable hearing experience i suggested using Floating-Point processing instead of Integers. Float (32/32 bits) @ 96000Hz/192000hz before reaching to output speaker. [32bit Float Explained](https://www.sounddevices.com/32-bit-float-files-explained/), [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754)
 
 ***Don't confuse Sample rate/Sampling rate in audio recording/mastering/converting files vs Oversampling on digital to analog signaling***, that's different. Oversampling is a technique upsampling based on the original source (sample rate) to reconstruct signal to reduce audio artifacts distortion and reduce aliasing in Nyquist frequency. Higher levels of oversampling results in less aliasing occurring in the audible range. 
 
