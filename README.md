@@ -76,13 +76,13 @@ or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_HDR.glsl"`
 
 `--dither-depth=auto` 
 
-`--dither=error-diffusion #(fruit|ordered|error-diffusion|no)` 
+`--dither=error-diffusion #(fruit|ordered|error-diffusion|no)` see[#9415](https://github.com/mpv-player/mpv/issues/9415) 
 
 `--error-diffusion=sierra-lite #(simple|false-fs|sierra-lite|floyd-steinberg|atkinson|jarvis-judice-ninke|stucki|burkes|sierra-3|sierra-2)`
 
-`~~\` it means set manually folder/location directory
+`~~\` it means set manually folder/location directory.
 
- > if you don't like writing combination, often to use same shaders into another platform you can combine many shaders into one file .glsl so less writing in mpv.conf. Make sure that shader doesn't conflict with other shaders
+ > if you don't like writing combination, often to use same shaders into another platform you can combine many shaders into one file .glsl so less writing in mpv.conf. Make sure that shader doesn't conflict with other shaders.
 
 # Quality reduction with hardware decoding
 *some device use DXVA-copy for rendering, enable `--hwdec=d3d11va-copy` to trigger D3d11va-copy.*
@@ -151,6 +151,8 @@ You could use specifies the algorithm used for tone-mapping images onto the targ
 [`--tone-mapping=...`](https://mpv.io/manual/master/#options-tone-mapping)
 
 [`--tone-mapping-param=...`](https://mpv.io/manual/master/#options-tone-mapping-param)
+
+for HDR see [#5804](https://github.com/mpv-player/mpv/pull/5804) [is:issue HDR in:...](https://github.com/mpv-player/mpv/issues?q=is%3Aissue+HDR+in%3Atitle%2Cbody%2Ccomments)
 
 # Refresh rate frequency
 
