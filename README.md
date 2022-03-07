@@ -144,6 +144,8 @@ If don't like grain/noise from your source video you could use static noise shad
 
 Shader by [Tsubajashi](https://github.com/Tsubajashi/mpv-settings)
 
+for Animation 2D [Anime4K](https://github.com/bloc97/Anime4K/blob/master/GLSL_Instructions.md)
+
 # Tone mapping
 
 You could use specifies the algorithm used for tone-mapping images onto the target display.
@@ -152,7 +154,7 @@ You could use specifies the algorithm used for tone-mapping images onto the targ
 
 [`--tone-mapping-param=...`](https://mpv.io/manual/master/#options-tone-mapping-param)
 
-for HDR see [#5804](https://github.com/mpv-player/mpv/pull/5804) [is:issue HDR in:...](https://github.com/mpv-player/mpv/issues?q=is%3Aissue+HDR+in%3Atitle%2Cbody%2Ccomments)
+for HDR see [#5804](https://github.com/mpv-player/mpv/pull/5804) [is:issue HDR in:...](https://github.com/mpv-player/mpv/issues?q=is%3Aissue+HDR+in%3Atitle%2Cbody%2Ccomments), [#8485](https://github.com/mpv-player/mpv/pull/8485), [#9678](https://github.com/mpv-player/mpv/issues/9678)
 
 # Refresh rate frequency
 
