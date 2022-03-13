@@ -97,6 +97,8 @@ or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_HDR.glsl"`
 
 *In general, it's very strongly advised to avoid hardware decoding unless absolutely necessary, i.e. if your CPU is insufficient to decode the file in questions. If you run into any weird decoding issues, frame glitches or discoloration, and you have `--hwdec=...` turned on, the first thing you should try is disabling it.*
 
+*On modern hardware for better performance and stability use `hwdec=...-copy`, If you're not using SVP and you sure using copy-backed could cause performance hit you could use native hwdec e.g. `hwdec=vaapi` or `hwdec=nvenc`*
+
 # load the 3D LUTs created from the ICC profile
 [`--icc-profile-auto`](https://mpv.io/manual/master/#options-icc-profile-auto) (**preferred*)
 
@@ -307,6 +309,8 @@ To maintaining acceptable hearing experience i suggested using Floating-Point pr
 ***Don't confuse Sample rate/Sampling rate in audio recording/mastering/converting files vs Oversampling on digital to analog signaling***, that's different. Oversampling is a technique upsampling based on the original source (sample rate) to reconstruct signal to reduce audio artifacts distortion and reduce aliasing in Nyquist frequency. Higher levels of oversampling results in less aliasing occurring in the audible range. 
 
 Sounds like i talking bias right because you couldn't tell the different 44100Hz/48000Hz vs 176400Hz/192000Hz? Human hearings limited to 20000Hz? That's not completely true. It's about in-machine processing not the limitation of human audible frequency range, we can't hear or playing digital audio format like you eating a banana because we don't live in virtual world. If we live in cyberspace and limitations as human in general still exist it's possible high frequency can hurt our ears. But we live in different world that's why we need machine as translator that might be complicated. 
+
+try Add [FFmpeg audio filter](https://ffmpeg.org/ffmpeg-filters.html#Audio-Filters)
 
 * Linux 
 <pre> set sample format to
