@@ -310,7 +310,18 @@ To maintaining acceptable hearing experience i suggested using Floating-Point pr
 
 Sounds like i talking bias right because you couldn't tell the different 44100Hz/48000Hz vs 176400Hz/192000Hz? Human hearings limited to 20000Hz? That's not completely true. It's about in-machine processing not the limitation of human audible frequency range, we can't hear or playing digital audio format like you eating a banana because we don't live in virtual world. If we live in cyberspace and limitations as human in general still exist it's possible high frequency can hurt our ears. But we live in different world that's why we need machine as translator that might be complicated. 
 
-try Add [FFmpeg audio filter](https://ffmpeg.org/ffmpeg-filters.html#Audio-Filters)
+Since most audio format on video are stereo lossy format due to less storage and bandwith consumption, we deal with some noise artifact still on acceptable audible range, we could do a trick using phase rotation [Phase rotation by Izotope](http://downloads.izotope.com/docs/rx6/49-phase/index.html#visual-example-of-phase-rotation).
+
+e.g. [ffmpeg Stereotools](https://ffmpeg.org/ffmpeg-filters.html#stereotools) allow rotation from 0° Degree to 360° Degress or up to your preference.
+Theoritically -180° are same to 360° and +180° are same to 180°.
+
+`--af=[stereotools=phasel=true:phaser=true:phase=180:mode=lr>rl]`
+
+`--af=[stereotools=phasel=true:phaser=true:phase=360:mode=lr>lr]`
+
+[--af=help](https://mpv.io/manual/master/#audio-filters-af)
+
+try using [FFmpeg audio filter](https://ffmpeg.org/ffmpeg-filters.html#Audio-Filters)
 
 * Linux 
 <pre> set sample format to
@@ -352,7 +363,6 @@ Commonly used sample rate, Sampling rate*(n)
 |  |  |  | 837900Hz | 912000Hz |
 |  |  |  | 882000Hz | 960000Hz |
 
-
 If your audio hardware in your system doesn't support high sample rate audio produce crackling noise (e.g. poor/old built in internal DAC/Speaker), you could use a capable third-party digital audio interface (Headset/DAC/Speaker).
 
 # miscellaneous
@@ -361,7 +371,7 @@ To be clear I'm not a fan of narcissistic audiophile (audiophilaceboo, audiofool
 
 CD Quality standard is 441000Hz that's more than enough? Why CD still using 441000Hz? because of compatibility less complicated, cheap. The old audio portable and old sound system device might couldn't process more than 16bits 44100Hz due to algorithm limitation on the hardware side. Did you know the old vinyl? there's still leaving a noise frequency artifact.
 
-Look at [this](http://src.infinitewave.ca/), an example 96Khz files compress to 44.1Khz, select converter to FFmpeg 4.2.2 (soxr) vs FFmpeg 4.2.2 (swr), test result select to sweep. you can look the artifact wave caused by compression in there. Of course compression/lossy reduce audio quality better using lossless right? absolutely not the goal is for less storage and still on acceptable audible range of human ear.
+Look at [this](http://src.infinitewave.ca/), an example 96Khz files compress to 44.1Khz, select converter to FFmpeg 4.2.2 (soxr) vs FFmpeg 4.2.2 (swr), test result select to sweep. you can look the artifact wave caused by compression in there. Of course compression/lossy reduce audio quality better using lossless right? absolutely not the goal is for less storage and still on acceptable audible range of human ear. (uhh I said twice)
 
 Advantage using 48 kHz sample rate;
    - offers slightly more headroom for tweaking
