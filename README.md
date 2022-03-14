@@ -298,7 +298,7 @@ I don't know why keeping some old devices and didn't yet throw away. The funny t
 - [x] Windows 10 in some CPU using DXVA2, D3D11, OpenGL, OpenCL or Vulkan, run flawesly. Windows 7 or 8.1 I didn't test it yet.
 - [ ] Mac, sorry I don't have an old Macbook.
 - [x] Minimum possibilty at least 25W-35W TDP range on mobile device on 4 Core / 4 Threads with proper integrated-GPU or 2 Core / 4 Threads + dedicated/hybrid-GPU. You should take care about TDP before blindly buying a mobile laptop because some OEM vendor Limit/Locked the Boost TDP due to thermal issue. 
-- [x] Celeron N5095 4C/4T. Multithreaded performance almost match Core i3 performance but single core performance and i-GPU still couldn't compete Core i3 caused by their natural design. I see on intel ark release the new [Celeron 7305](https://ark.intel.com/content/www/us/en/ark/products/226264/intel-celeron-processor-7305-8m-cache-1-10-ghz.html) 5 Core / 6 Thread (1 Core with Hyperthread + 4 Core Celeron by nature) with TDP 15W but can Boost up to 55W, finally paired with i-GPU iris Xe Graphic, it took a long almost 1 decade since first [4 core Celeron release](https://ark.intel.com/content/www/us/en/ark/products/76752/intel-celeron-processor-n2910-2m-cache-1-60-ghz.html), indeed Intel Core i3 always better than Celeron.
+- [x] Celeron N5095 4C/4T. Multithreaded performance almost match Core i3 performance but single core performance and i-GPU still couldn't compete Core i3 caused by their natural design. I see on intel ark release the new [Celeron 7305](https://ark.intel.com/content/www/us/en/ark/products/226264/intel-celeron-processor-7305-8m-cache-1-10-ghz.html) and [Pentium 8505](https://ark.intel.com/content/www/us/en/ark/products/226265/intel-pentium-processor-8505-8m-cache-up-to-4-40-ghz-with-ipu.html) 5 Core / 6 Thread (1 Core with Hyperthread + 4 Core Celeron by nature) with TDP 15W but can Boost up to 55W, finally paired with i-GPU iris Xe Graphic, it took a long almost 1 decade since first [4 core Celeron release](https://ark.intel.com/content/www/us/en/ark/products/76752/intel-celeron-processor-n2910-2m-cache-1-60-ghz.html) that might be usefull for Low-end to Mid-end device get a last longer battery live without sacrifice too much on performance. Indeed Core i3 always more better than Celeron/Pentium.
 
 Otherwise if your [Entry level hardware is a Dekstop PC class level](https://www.svp-team.com/wiki/FAQ#What_are_system_requirements.3F) that shouldn't be a problem
 
@@ -321,7 +321,7 @@ Theoritically -180° are same to 360° and +180° are same to 180°.
 
 [--af=help](https://mpv.io/manual/master/#audio-filters-af)
 
-try using [FFmpeg audio filter](https://ffmpeg.org/ffmpeg-filters.html#Audio-Filters)
+try using other filter [FFmpeg audio filter](https://ffmpeg.org/ffmpeg-filters.html#Audio-Filters)
 
 * Linux 
 <pre> set sample format to
