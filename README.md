@@ -22,13 +22,15 @@ it can improving startup speed performance but the unused cache files may stick 
 
 ## * Might usable for low-end/entry level device such as Intel-HD, Vega3 or old Radeon HD APU mobile laptop (*not too old*)
 
-`--glsl-shaders="~~\shaders\AMD-FSR-PQ 1-Denoise.glsl"`
+`--glsl-shaders="C:~~\mpv\shaders\AMD-CAS-scaled_luma_trc-sRGB.glsl;C:~~\mpv\shaders\ravu-r3-rgb.glsl"` (**Prefered*, not consuming too much resource)
+
+or `--glsl-shaders="~~\shaders\AMD-FSR-PQ 1-Denoise.glsl"`
 
 or `--glsl-shaders="~~\shaders\AMD-CAS-scaled_luma_trc-Gamma-2.2.glsl"`
 
-or `--glsl-shaders="~~\shaders\AMD-CAS-luma_trc-BT.1886.glsl"`
+or `--glsl-shaders="~~\shaders\AMD-CAS-luma_trc-sRGB.glsl"`
 
-or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-BT.1886.glsl"`
+or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl"`
 
 or `--glsl-shaders="~~\shaders\ravu-lite-r2.glsl;~~\shaders\ravu-r2-yuv.glsl"`
 
@@ -36,7 +38,9 @@ or `--glsl-shaders="~~\shaders\ravu-lite-r2.glsl;~~\shaders\ravu-r2-yuv.glsl"`
 
 or `--glsl-shaders="~~\shaders\NVIDIA-Scaler128_no-HDR"`
 
-or `--glsl-shaders="~~\shaders\NVIDIA-Scaler128_no-HDR;~~\shaders\AMD-CAS-rgb_trc-BT.1886"`
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler128_no-HDR;~~\shaders\AMD-CAS-rgb_trc-sRGB"`
+
+or `--glsl-shaders="C:~~\mpv\shaders\NVIDIA-Scaler128_no-HDR.glsl;C:~~\mpv\shaders\ravu-r3-rgb.glsl"` (**Prefered*)
 
 ## * Might usable for Mid-end device
 
@@ -46,33 +50,33 @@ or `--glsl-shaders="~~\shaders\FSRCNNX_x2_8-0-4-1.glsl;~~\shaders\KrigBilateral.
 
 or `--glsl-shaders="~~\shaders\FSRCNNX_x2_16-0-4-1.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
-or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-BT.1886.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
+or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
-or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_no-HDR.glsl;~~\shaders\AMD-CAS-scaled_rgb_trc_BT.1886` 
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_no-HDR.glsl;~~\shaders\AMD-CAS-scaled_rgb_trc_sRGB.glsl` 
 
  > for performance *(Combined NIS(Nvidia Image Scaling) + AMD FidelityFX CAS(Contrast Adaptive Sharpening) RGB version* it could get better result cause when using Nvidia scaler only, some few parts are supposed blur that become too sharp might unacceptable, while CAS get better texture especially on blur part but not getting a strong line sharpening.
 
-or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl"`
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl;~~\mpv\shaders\ravu-r3-rgb.glsl"`
 
-or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_no-HDR.glsl"`
+or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_no-HDR.glsl;~~\mpv\shaders\ravu-r3-rgb.glsl"`
 
 ## * Might usable for High-end device
 
-`--glsl-shaders="~~\shaders\~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-BT.1886.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
+`--glsl-shaders="~~\shaders\~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
-or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\AMD-CAS-rgb_trc-BT.1886`
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl`
 
-or `--glsl-shaders="~~\shaders\FSRCNNX_x2_16-0-4-1.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl;~~\shaders\~~\shaders\AMD-CAS-rgb_trc-BT.1886"`
+or `--glsl-shaders="~~\shaders\FSRCNNX_x2_16-0-4-1.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl;~~\shaders\~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl"`
 
 or `--glsl-shaders="~~\shaders\FSRCNNX_x2_56-16-4-1.glsl;~~\shaders\KrigBilateral.glsl"`
 
 or `--glsl-shaders="~~\shaders\FSRCNN_x2_r1_32-0-2.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
-or `--glsl-shaders="~~\shaders\FSRCNN_x2_r2_32-0-2.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl;~~\shaders\~~\shaders\AMD-CAS-rgb_trc-BT.1886"`
+or `--glsl-shaders="~~\shaders\FSRCNN_x2_r2_32-0-2.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl;~~\shaders\~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl"`
 
-or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl"`
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl;~~\mpv\shaders\ravu-r3-rgb.glsl"`
 
-or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_HDR.glsl"`
+or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_HDR.glsl;~~\mpv\shaders\ravu-r3-rgb.glsl"`
 
 `--dither-depth=auto` 
 
@@ -312,14 +316,24 @@ Sounds like i talking bias right because you couldn't tell the different 44100Hz
 
 Since most audio format on video are stereo lossy format due to less storage and bandwith consumption, we deal with some noise artifact still on acceptable audible range, we could do a trick using phase rotation [Phase rotation by Izotope](http://downloads.izotope.com/docs/rx6/49-phase/index.html#visual-example-of-phase-rotation).
 
-e.g. [ffmpeg Stereotools](https://ffmpeg.org/ffmpeg-filters.html#stereotools) allow rotation from 0° Degree to 360° Degress or up to your preference.
+e.g. [ffmpeg audio filter Stereotools](https://ffmpeg.org/ffmpeg-filters.html#stereotools) allow rotation from 0° Degree to 360° Degress or up to your preference.
 Theoritically -180° are same to 360° and +180° are same to 180°.
 
 `--af=[stereotools=phasel=true:phaser=true:phase=180:mode=lr>rl]`
 
 `--af=[stereotools=phasel=true:phaser=true:phase=360:mode=lr>lr]`
 
-[--af=help](https://mpv.io/manual/master/#audio-filters-af)
+[ffmpeg audio filter Bass](https://ffmpeg.org/ffmpeg-filters.html#bass_002c-lowshelf)
+
+`--af=[bass=frequency=200:width_type=q:width=2.0:poles=2:gain=16:mix=1:normalize=true:transform=svf:precision=f64]`
+
+[ffmpeg audio filter Firequalizer](https://ffmpeg.org/ffmpeg-filters.html#firequalizer)
+
+`--af=[firequalizer=gain='gain_interpolate(f)':delay=0.027:accuracy=1:wfunc=bharris:gain_entry='entry(50,5.0);entry(100,5.0)':scale=linlin]`
+
+`--af=[firequalizer=gain='gain_interpolate(f)':delay=0.027:accuracy=1:wfunc=bharris:gain_entry='entry(31,5.0);entry(40,5.0);entry(41,5.0);entry(50,5.0);entry(100,5.0);entry(200,5.0);entry(392,5.0);entry(523,5.0)':scale=linlog]`
+
+see [--af=help](https://mpv.io/manual/master/#audio-filters-af)
 
 try using other filter [FFmpeg audio filter](https://ffmpeg.org/ffmpeg-filters.html#Audio-Filters)
 
