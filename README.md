@@ -244,9 +244,9 @@ for [`vo=gpu-next`](gpu-renderer-options) see [#9427](https://github.com/mpv-pla
 
 Reference about [B frame and P frame by Anonymous on codecalamity](https://codecalamity.com/hardware-encoding-4k-hdr10-videos/), If you need High Quality rendering use CPU encoding, afaik at this moment GPU encoding are still far in terms of high quality.
 
-8. On Linux system you already know which one is similiar parameter using .vpy script.
-9. If still resulting framedrops, decrease Frame size to HD (1280x720) or set manually on "resize e.g. `-12800768`" (1280 x 768 - WXGA)
-10. Probably if you resize to HD but your screen is bigger than HD, maybe you need utilize some shaders for upscaling like AMD FSR, AMD CAS/CAS-Scaled, NVIDIA-Scaler/Sharpen, ravu, SSimSuperRes, nnedi3, FSRCNN_x2 and so on. For Chroma you could utilize ravu r3/r4 rgb version, KrigBilateral and so on. Optional add or reduce [--saturation=...](https://mpv.io/manual/master/#options-saturation) or [--contrast=...](https://mpv.io/manual/master/#options-contrast) might be help for TN panel.
+7. On Linux system you already know which one is similiar parameter using .vpy script.
+8. If still resulting framedrops, decrease Frame size to HD (1280x720) or set manually on "resize e.g. `-12800768`" (1280 x 768 - WXGA)
+9. Probably if you resize to HD but your screen is bigger than HD, maybe you need utilize some shaders for upscaling like AMD FSR, AMD CAS/CAS-Scaled, NVIDIA-Scaler/Sharpen, ravu, SSimSuperRes, nnedi3, FSRCNN_x2 and so on. For Chroma you could utilize ravu r3/r4 rgb version, KrigBilateral and so on. Optional add or reduce [--saturation=...](https://mpv.io/manual/master/#options-saturation) or [--contrast=...](https://mpv.io/manual/master/#options-contrast) might be help for TN panel.
 
 
 ### ****Advantage set display frequency to 48 Hertz and lowering display resolution***
