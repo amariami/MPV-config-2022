@@ -24,13 +24,13 @@ it can improving startup speed performance but the unused cache files may stick 
 
 `--glsl-shaders="C:~~\mpv\shaders\AMD-CAS-scaled_luma_trc-sRGB.glsl;C:~~\mpv\shaders\ravu-r3-rgb.glsl"` (**Prefered*, not consuming too much resource)
 
-or `--glsl-shaders="~~\shaders\AMD-FSR-PQ 1-Denoise.glsl"`
+or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-0_QUIT-EARLY-0)_(RCAS_PQ-0_DENOISE-1).glsl"`
 
 or `--glsl-shaders="~~\shaders\AMD-CAS-scaled_luma_trc-Gamma-2.2.glsl"`
 
 or `--glsl-shaders="~~\shaders\AMD-CAS-luma_trc-sRGB.glsl"`
 
-or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl"`
+or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-0_QUIT-EARLY-0)_(RCAS_PQ-0_DENOISE-1).glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl"`
 
 or `--glsl-shaders="~~\shaders\ravu-lite-r2.glsl;~~\shaders\ravu-r2-yuv.glsl"`
 
@@ -44,15 +44,15 @@ or `--glsl-shaders="C:~~\mpv\shaders\NVIDIA-Scaler128_no-HDR.glsl;C:~~\mpv\shade
 
 ## * Might usable for Mid-end device
 
-`--glsl-shaders="~~\shaders\AMD-FSR-PQ 1-Denoise.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
+`--glsl-shaders="~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-0_QUIT-EARLY-0)_(RCAS_PQ-0_DENOISE-1).glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
 or `--glsl-shaders="~~\shaders\FSRCNNX_x2_8-0-4-1.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
 or `--glsl-shaders="~~\shaders\FSRCNNX_x2_16-0-4-1.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
-or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
+or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-0_QUIT-EARLY-0)_(RCAS_PQ-0_DENOISE-1).glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
-or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_no-HDR.glsl;~~\shaders\AMD-CAS-scaled_rgb_trc_sRGB.glsl` 
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_no-HDR.glsl;~~\shaders\AMD-CAS-scaled_rgb_trc_sRGB.glsl"` 
 
  > for performance *(Combined NIS(Nvidia Image Scaling) + AMD FidelityFX CAS(Contrast Adaptive Sharpening) RGB version* it could get better result cause when using Nvidia scaler only, some few parts are supposed blur that become too sharp might unacceptable, while CAS get better texture especially on blur part but not getting a strong line sharpening.
 
@@ -62,9 +62,9 @@ or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_no-HDR.glsl;~~\mpv\shaders\ravu
 
 ## * Might usable for High-end device
 
-`--glsl-shaders="~~\shaders\~~\shaders\AMD-FSR_PQ 0-Denoise.glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
+`--glsl-shaders="~~\shaders\~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-0_QUIT-EARLY-0)_(RCAS_PQ-0_DENOISE-1).glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
-or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl`
+or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl"`
 
 or `--glsl-shaders="~~\shaders\FSRCNNX_x2_16-0-4-1.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl;~~\shaders\~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl"`
 
@@ -223,7 +223,7 @@ for 25 fps video set [`--video-sync-max-video-change=...`](https://mpv.io/manual
  
 [SÉCAM](https://en.wikipedia.org/wiki/SECAM)
 
-### ****On low end device 2C/4T CPU or 4C/4T you could use 1 or 2 shaders at same time.***
+### ****On low end device 2C/4T CPU or 4C/4T you could use 1 or 2 light-medium shaders at same time.***
 
 ### ****MPV only (Without SVP)***
 
@@ -237,12 +237,14 @@ for [`vo=gpu-next`](gpu-renderer-options) see [#9427](https://github.com/mpv-pla
 
 1. If your sytem not enough interpolating fps depending on frequency display such as 60Hz or more, you could lowering Display Frequency to 48Hz
 2. If your video source higher resolution than your screen, set Reduce Image scaling on "Frame Size" menu. In Alter video frame size block menu Set alter video framesize "Decrease to screen" 
-3. If still get framedrop set "Decrease to HD"
-4. Do "framerate conversion to Movie X2" or Fixed Frame rate 48 fps for 24 fps source 
-5. Do "framerate conversion to Movie X2" or Fixed Frame rate 60 fps for 30 fps source
-6. Not recommending use an interpolation more than 30 fps video with SVP, sometimes resulting awful motion
-7. For me no reason using more than doubling frame rate interpolation.
-8. On Linux sytem you already know which one is similiar parameter using .vpy script.
+3. Do "framerate conversion to Movie X2" or Fixed Frame rate 48 fps for 24 fps source 
+4. Do "framerate conversion to Movie X2" or Fixed Frame rate 60 fps for 30 fps source
+5. Not recommending use an interpolation more than 30 fps source video with SVP, sometimes resulting awful motion in 60Hz display, except use high refresh rate display but idk result on fast panning scene. You know what are you doing here.
+6. For me mostly no reason using more than doubling frame rate interpolation. `24 x2 = 48fps`, `25 x 2 = 50fps`, `30 x 2 = 60fps`. except 15 fps could use `15 x 3 = 45fps` cause 15fps video is lack of B frame and P frame
+7. On Linux sytem you already know which one is similiar parameter using .vpy script.
+8. If still resulting framedrops, decrease Frame size to HD (1280x720) or set manually on "resize e.g. `-12800768`" (1280 x 768 - WXGA)
+9. Probably if you resize to HD but your screen is bigger than HD, probably you need utilize some shaders for upscaling like AMD FSR, AMD CAS/CAS-Scaled, NVIDIA-Scaler/Sharpen, ravu, SSimSuperRes, nnedi3, FSRCNN_x2 and so on. For Chroma you could utilize ravu r3/r4 rgb version, KrigBilateral and so on.
+
 
 ### ****Advantage set display frequency to 48 Hertz and lowering display resolution***
 1. you can extend battery life and reduce power consuption on mobile device 
