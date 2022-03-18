@@ -78,7 +78,7 @@ or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl;~~\mpv\shaders\ravu-r3-
 
 or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_HDR.glsl;~~\mpv\shaders\ravu-r3-rgb.glsl"`
 
-`--dither-depth=auto` 
+`--dither-depth=auto` #or manually set 6/8/10/12/14/16 
 
 `--dither=error-diffusion #(fruit|ordered|error-diffusion|no)` see[#9415](https://github.com/mpv-player/mpv/issues/9415) 
 
@@ -116,7 +116,7 @@ Calculation 8*(N). *64x64x64 72x72x72 80x80x80 88x88x88 96x96x96 104x104x104 112
 
 [`--scaler-lut-size=10`](https://mpv.io/manual/master/#options-scaler-lut-size)
 
-[`--icc-cache-dir=~~\3dLutcache`](https://mpv.io/manual/master/#options-icc-cache-dir) #create a new folder to store cache
+[`--icc-cache-dir=~~\iccdir`](https://mpv.io/manual/master/#options-icc-cache-dir) #create a new folder to store cache
 
 [`--icc-profile=...`](https://mpv.io/manual/stable/#options-icc-profile)(*Optional*) #I suggested don't use that if your display support ICC by default, it can ruin motion on video playback caused glitch. Except your system doesn't support color management. On Mac or Windows you shouldn't need that, use auto
 
@@ -306,7 +306,7 @@ I don't know why keeping some old devices and didn't yet throw away. The funny t
 - [x] Linux it's hit and miss using propietary or open source driver. I won't make a general recommendation on which to use, but in some specific case a certain driver are better than others.
 - [x] Windows 10 in some CPU using DXVA2, D3D11, OpenGL, OpenCL or Vulkan, run flawesly. Windows 7 or 8.1 I didn't test it yet.
 - [ ] Mac, sorry I don't have an old Macbook.
-- [x] Minimum possibilty at least 25W-35W TDP range on mobile device on 4 Core / 4 Threads with proper integrated-GPU or 2 Core / 4 Threads + dedicated/hybrid-GPU. You should take care about TDP before blindly buying a mobile laptop because some OEM vendor Limit/Locked the Boost TDP due to thermal issue. 
+- [x] Minimum possibilty at least 25W-35W TDP range on mobile device is 4 Core / 4 Threads with [proper integrated-GPU](https://www.svp-team.com/wiki/GPU_Compatibility) (minimum Intel HD/UHD with 24EU, Iris Xe/Plus, Radeon HD, Radeon R5/R7/R9, Vega 3/5CU/6/6CU/7CU/8/8CU/9/10/11, Radeon 660M/680M) or 2 Core / 4 Threads + dedicated/hybrid-GPU. You should take care about TDP before blindly buying a mobile laptop cause some OEM vendor Limit/Locked the Boost TDP due to thermal issue.
 - [x] Celeron N5095 4C/4T. Multithreaded performance almost match Core i3 performance but single core performance and i-GPU still couldn't compete Core i3 caused by their natural design. I see on intel ark release the new [Celeron 7305](https://ark.intel.com/content/www/us/en/ark/products/226264/intel-celeron-processor-7305-8m-cache-1-10-ghz.html) and [Pentium 8505](https://ark.intel.com/content/www/us/en/ark/products/226265/intel-pentium-processor-8505-8m-cache-up-to-4-40-ghz-with-ipu.html) 5 Core / 6 Thread (1 Core with Hyperthread + 4 Core Celeron by nature) with TDP 15W but can Boost up to 55W, finally paired with i-GPU iris Xe Graphic, it took a long almost 1 decade since first [4 core Celeron release](https://ark.intel.com/content/www/us/en/ark/products/76752/intel-celeron-processor-n2910-2m-cache-1-60-ghz.html) that might be usefull for Low-end to Mid-end device get a last longer battery live without sacrifice too much on performance. Indeed Core i3 always more better than Celeron/Pentium.
 
 Otherwise if your [Entry level hardware is a Dekstop PC class level](https://www.svp-team.com/wiki/FAQ#What_are_system_requirements.3F) that shouldn't be a problem
