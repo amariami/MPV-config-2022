@@ -240,10 +240,13 @@ for [`vo=gpu-next`](gpu-renderer-options) see [#9427](https://github.com/mpv-pla
 3. Do "framerate conversion to Movie X2" or Fixed Frame rate 48 fps for 24 fps source 
 4. Do "framerate conversion to Movie X2" or Fixed Frame rate 60 fps for 30 fps source
 5. Not recommending use an interpolation more than 30 fps source video with SVP, sometimes resulting awful motion in 60Hz display, except use high refresh rate display but idk result on fast panning scene. You know what are you doing here.
-6. For me mostly no reason using more than doubling frame rate interpolation. `24 x2 = 48fps`, `25 x 2 = 50fps`, `30 x 2 = 60fps`. except 15 fps could use `15 x 3 = 45fps` cause 15fps video is lack of B frame and P frame
-7. On Linux sytem you already know which one is similiar parameter using .vpy script.
-8. If still resulting framedrops, decrease Frame size to HD (1280x720) or set manually on "resize e.g. `-12800768`" (1280 x 768 - WXGA)
-9. Probably if you resize to HD but your screen is bigger than HD, probably you need utilize some shaders for upscaling like AMD FSR, AMD CAS/CAS-Scaled, NVIDIA-Scaler/Sharpen, ravu, SSimSuperRes, nnedi3, FSRCNN_x2 and so on. For Chroma you could utilize ravu r3/r4 rgb version, KrigBilateral and so on.
+6. For me mostly no reason using more than doubling frame rate interpolation. `24 x2 = 48fps`, `25 x 2 = 50fps`, `30 x 2 = 60fps`. Except 15 fps could use `15 x 3 = 45fps` cause 15fps video is lack of B frame and P frame
+
+Reference about [B frame and P frame by Anonymous on codecalamity](https://codecalamity.com/hardware-encoding-4k-hdr10-videos/), If you need High Quality rendering use CPU encoding, afaik at this moment GPU encoding are still far in terms of high quality.
+
+8. On Linux system you already know which one is similiar parameter using .vpy script.
+9. If still resulting framedrops, decrease Frame size to HD (1280x720) or set manually on "resize e.g. `-12800768`" (1280 x 768 - WXGA)
+10. Probably if you resize to HD but your screen is bigger than HD, maybe you need utilize some shaders for upscaling like AMD FSR, AMD CAS/CAS-Scaled, NVIDIA-Scaler/Sharpen, ravu, SSimSuperRes, nnedi3, FSRCNN_x2 and so on. For Chroma you could utilize ravu r3/r4 rgb version, KrigBilateral and so on. Optional add or reduce [--saturation=...](https://mpv.io/manual/master/#options-saturation) or [--contrast=...](https://mpv.io/manual/master/#options-contrast) might be help for TN panel.
 
 
 ### ****Advantage set display frequency to 48 Hertz and lowering display resolution***
