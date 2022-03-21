@@ -97,7 +97,7 @@ or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_HDR.glsl;~~\mpv\shaders\ravu-r3
 
 *dxva2 is not safe. It appears to always use BT.601 for forced RGB conversion, but actual behavior depends on the GPU drivers. Some drivers appear to convert to limited range RGB, which gives a faded appearance. In addition to driver-specific behavior, global system settings might affect this additionally. This can give incorrect results even with completely ordinary video sources. see [mpvio manual](https://mpv.io/manual/master/#options-hwdec).*
 
-*All other methods, in particular the copy-back methods (like dxva2-copy etc.) should hopefully be safe, although they can still cause random decoding issues. At the very least, they shouldn't affect the colors of the image.**Otherwise don't mind when you couldn't tell the different dxva2-copy and d3d11va-copy.**
+*All other methods, in particular the copy-back methods (like dxva2-copy etc.) should hopefully be safe, although they can still cause random decoding issues. At the very least, they shouldn't affect the colors of the image. **Otherwise don't mind when you couldn't tell the different dxva2-copy and d3d11va-copy.** [dxva2api.h](https://docs.microsoft.com/en-us/windows/win32/api/dxva2api/ne-dxva2api-dxva2_videotransferfunction) [dxva2api.h](https://docs.microsoft.com/en-us/windows/win32/api/dxva2api/ne-dxva2api-dxva2_videotransfermatrix)
 
 *In general, it's very strongly advised to avoid hardware decoding unless absolutely necessary, i.e. if your CPU is insufficient to decode the file in questions. If you run into any weird decoding issues, frame glitches or discoloration, and you have `--hwdec=...` turned on, the first thing you should try is disabling it.*
 
