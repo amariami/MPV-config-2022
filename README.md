@@ -24,27 +24,27 @@ it can improving startup speed performance but the unused cache files may stick 
 
 `--glsl-shaders="C:~~\mpv\shaders\AMD-CAS-scaled_luma_trc-sRGB.glsl;C:~~\mpv\shaders\ravu-r3-rgb.glsl"` (**Prefered*, not consuming too much resource)
 
-or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-0_QUIT-EARLY-0)_(RCAS_PQ-0_DENOISE-1).glsl"`
+or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-1_QUIT-EARLY-1)_(RCAS_PQ-0_DENOISE-0).glsl"`
 
 or `--glsl-shaders="~~\shaders\AMD-CAS-scaled_luma_trc-Gamma-2.2.glsl"`
 
 or `--glsl-shaders="~~\shaders\AMD-CAS-luma_trc-sRGB.glsl"`
 
-or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-0_QUIT-EARLY-0)_(RCAS_PQ-0_DENOISE-1).glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl"`
-
 or `--glsl-shaders="~~\shaders\ravu-lite-r2.glsl;~~\shaders\ravu-r2-yuv.glsl"`
 
 [see comment](https://gist.github.com/agyild/82219c545228d70c5604f865ce0b0ce5?permalink_comment_id=4072085#gistcomment-4072085) it doesn't hurt performance impact on mobile laptop
+
+or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-1_QUIT-EARLY-1)_(RCAS_PQ-0_DENOISE-0).glsl"` (**prefered 1st)
 
 or `--glsl-shaders="~~\shaders\NVIDIA-Scaler128_no-HDR"`
 
 or `--glsl-shaders="~~\shaders\NVIDIA-Scaler128_no-HDR;~~\shaders\AMD-CAS-rgb_trc-sRGB"`
 
-or `--glsl-shaders="C:~~\mpv\shaders\NVIDIA-Scaler128_no-HDR.glsl;C:~~\mpv\shaders\ravu-r3-rgb.glsl"` (**Prefered*)
+or `--glsl-shaders="C:~~\mpv\shaders\NVIDIA-Scaler128_no-HDR.glsl;C:~~\mpv\shaders\ravu-r3-rgb.glsl"` (**Prefered 2nd*)
 
 ## * Might usable for Mid-end device
 
-`--glsl-shaders="~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-0_QUIT-EARLY-0)_(RCAS_PQ-0_DENOISE-1).glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
+`--glsl-shaders="~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-1_QUIT-EARLY-1)_(RCAS_PQ-0_DENOISE-0).glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"` with `--scale=ewa_lanczossharp` (**prefered 1st)
 
 or `--glsl-shaders="~~\shaders\FSRCNNX_x2_8-0-4-1.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
 
@@ -54,7 +54,9 @@ or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-0_QUIT-EARLY-0
 
 or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_no-HDR.glsl;~~\shaders\AMD-CAS-scaled_rgb_trc_sRGB.glsl"` 
 
- > for performance *(Combined NIS(Nvidia Image Scaling) + AMD FidelityFX CAS(Contrast Adaptive Sharpening) RGB version* it could get better result cause when using Nvidia scaler only, some few parts are supposed blur that become too sharp might unacceptable, while CAS get better texture especially on blur part but not getting a strong line sharpening.
+ > for performance AMD FidelityFX Super Resolution v1.0.2 for mpv could get better result. Nvidia scaler some few parts are supposed blur that become too sharp might unacceptable, while FidelityFX Super Resolution get better detail and texture especially on blur part but not getting a strong line sharpening.
+
+or `--glsl-shaders="~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-1_QUIT-EARLY-1)_(RCAS_PQ-0_DENOISE-0).glsl"` (**prefered 1st)
 
 or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl;~~\mpv\shaders\ravu-r3-rgb.glsl"`
 
@@ -62,7 +64,7 @@ or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_no-HDR.glsl;~~\mpv\shaders\ravu
 
 ## * Might usable for High-end device
 
-`--glsl-shaders="~~\shaders\~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-0_QUIT-EARLY-0)_(RCAS_PQ-0_DENOISE-1).glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"`
+`--glsl-shaders="~~\shaders\~~\shaders\AMD-FSR_PQ 0_(EASU_DERING-1_ANALYS-1_QUIT-EARLY-1)_(RCAS_PQ-0_DENOISE-0).glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\SSimDownscaler.glsl"` with `--scale=ewa_lanczossharp`
 
 or `--glsl-shaders="~~\shaders\NVIDIA-Scaler256_HDR.glsl;~~\shaders\KrigBilateral.glsl;~~\shaders\AMD-CAS-rgb_trc-sRGB.glsl"`
 
@@ -114,7 +116,7 @@ or `--glsl-shaders="~~\shaders\NVIDIA-Sharpen256_HDR.glsl;~~\mpv\shaders\ravu-r3
 [3DLUT by James Ritson](https://affinityspotlight.com/article/1d-vs-3d-luts/#3d-luts)
 Calculation 8*(N). *64x64x64 72x72x72 80x80x80 88x88x88 96x96x96 104x104x104 112x112x112 120x120x120 128x128x128 ... 256x256x256 ... 512x512x512*
 
-[`--scaler-lut-size=10`](https://mpv.io/manual/master/#options-scaler-lut-size)
+[`--scaler-lut-size=8 #or 10`](https://mpv.io/manual/master/#options-scaler-lut-size)
 
 [`--icc-cache-dir=~~\iccdir`](https://mpv.io/manual/master/#options-icc-cache-dir) #create a new folder to store cache
 
@@ -179,7 +181,7 @@ Guide [eXmendiC wordpress](https://iamscum.wordpress.com/guides/videoplayback-gu
 
 # Interpolation/Smooth motion
 
-Need [`--video-sync=display-...`](https://mpv.io/manual/master/#options-video-sync) to enable MPV built in [interpolation](https://mpv.io/manual/master/#options-interpolation) e.g `--video-sync=display-resample` or `--video-sync=display-vdrop`
+Need [`--video-sync=display-...`](https://mpv.io/manual/master/#options-video-sync) to enable MPV built in [interpolation](https://mpv.io/manual/master/#options-interpolation) e.g `--video-sync=display-resample` or `--video-sync=display-resample-vdrop`
 
 Calculation 
 24 fps  = 24*(N)
@@ -319,7 +321,7 @@ To maintaining acceptable hearing experience i suggested using Floating-Point pr
 
 Sounds like i talking bias right because you couldn't tell the different 44100Hz/48000Hz vs 176400Hz/192000Hz? Human hearings limited to 20000Hz? That's not completely true. It's about in-machine processing not the limitation of human audible frequency range, we can't hear or playing digital audio format like you eating a banana because we don't live in virtual world. If we live in cyberspace and limitations as human in general still exist it's possible high frequency can hurt our ears. But we live in different world that's why we need machine as translator that might be complicated. 
 
-Since most audio format on video are stereo lossy format due to less storage and bandwith consumption, we deal with some noise artifact still on acceptable audible range, we could do a trick using phase rotation [Phase rotation by Izotope](http://downloads.izotope.com/docs/rx6/49-phase/index.html#visual-example-of-phase-rotation).
+Since most audio format on video are stereo lossy format due to less storage and bandwith consumption, we deal with some noise artifact still on acceptable audible range, some trick using phase rotation [Phase rotation by Izotope](http://downloads.izotope.com/docs/rx6/49-phase/index.html#visual-example-of-phase-rotation).
 
 e.g. [ffmpeg audio filter Stereotools](https://ffmpeg.org/ffmpeg-filters.html#stereotools) allow rotation from 0° Degree to 360° Degress or up to your preference.
 Theoritically -180° are same to 360° and +180° are same to 180°.
@@ -390,7 +392,7 @@ To be clear I'm not a fan of narcissistic audiophile (audiophilaceboo, audiofool
 
 CD Quality standard is 441000Hz that's more than enough? Why CD still using 441000Hz? because of compatibility less complicated, cheap. The old audio portable and old sound system device might couldn't process more than 16bits 44100Hz due to algorithm limitation on the hardware side. Did you know the old vinyl? there's still leaving a noise frequency artifact.
 
-Look at [this](http://src.infinitewave.ca/), an example 96Khz files compress to 44.1Khz, select converter to FFmpeg 4.2.2 (soxr) vs FFmpeg 4.2.2 (swr), test result select to sweep. you can look the artifact wave caused by compression in there. Of course compression/lossy reduce audio quality better using lossless right? absolutely not the goal is for less storage and still on acceptable audible range of human ear. (uhh I said twice)
+Look at [this](http://src.infinitewave.ca/), an example 96Khz files compress to 44.1Khz, select converter to FFmpeg 4.2.2 (soxr) vs FFmpeg 4.2.2 (swr), test result select to sweep. you can look the artifact wave caused by compression in there. Of course compression/lossy reduce audio quality better using lossless right? absolutely not, the goal is for less storage and still on acceptable audible range of human ear. (uhh I said twice)
 
 Advantage using 48 kHz sample rate;
    - offers slightly more headroom for tweaking
