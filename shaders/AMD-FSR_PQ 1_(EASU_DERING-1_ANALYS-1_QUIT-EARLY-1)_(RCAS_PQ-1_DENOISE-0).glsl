@@ -35,7 +35,7 @@
 //!BIND HOOKED
 //!SAVE EASUTEX
 //!DESC FidelityFX Super Resolution v1.0.2 (EASU) 1-1-1-1
-//!WHEN OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 0.5 >
+//!WHEN OUTPUT.w OUTPUT.h * LUMA.w LUMA.h * / 0.707106 >
 //!WIDTH OUTPUT.w OUTPUT.w LUMA.w 2 * < * LUMA.w 2 * OUTPUT.w LUMA.w 2 * > * + OUTPUT.w OUTPUT.w LUMA.w 2 * = * +
 //!HEIGHT OUTPUT.h OUTPUT.h LUMA.h 2 * < * LUMA.h 2 * OUTPUT.h LUMA.h 2 * > * + OUTPUT.h OUTPUT.h LUMA.h 2 * = * +
 //!COMPONENTS 1
