@@ -12,6 +12,9 @@
 // 
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library.
+// Use scale "lanczos" for best result
+// Use dscale "mitchell" if dislike ringing
+// Use dscale "lanczos" for sharpness or compromise with "catrom"
 
 //!HOOK POSTKERNEL
 //!BIND HOOKED
